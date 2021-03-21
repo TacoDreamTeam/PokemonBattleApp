@@ -5,54 +5,54 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.revature.models.Pokemon;
+import com.revature.models.Team;
 import com.revature.util.HibernateUtil;
 
-public class PokemonDao {
-	
-	public void insertPokemon(Pokemon pokemon) {
+public class TeamDao {
+
+	public void insertTeam(Team team) {
 
 		Session ses = HibernateUtil.getSession(); // 1. capture the session
 
 		Transaction tx = ses.beginTransaction(); // 2. Perform an operation on the DB
 
-		ses.save(pokemon); // 3. use the save() session method to perform an insert operation
+		ses.save(team); // 3. use the save() session method to perform an insert operation
 
 		tx.commit(); // 4. commit the transaction by utilizing a method from the actual Transaction
 						// interface;
 	}
 
-	public void updatePokemon(Pokemon pokemon) {
+	public void updateTeam(Team team) {
 
 		Session ses = HibernateUtil.getSession();
 		Transaction tx = ses.beginTransaction();
 
-		ses.save(pokemon);
+		ses.save(team);
 		tx.commit();
 	}
 
 	/*
-	 * Returns all pokemon decks
+	 * Returns all trainer decks
 	 */
 
-	public List<Pokemon> selectAllPokemon() {
+	public List<Team> selectAllTeam() {
 		Session ses = HibernateUtil.getSession();
 
-		List<Pokemon> pokemonList = ses.createQuery("from pokemon", Pokemon.class).list();
+		List<Team> deckList = ses.createQuery("from team", Team.class).list();
 
-		return pokemonList;
+		return deckList;
 
 	}
 
 	/*
-	 * return pokemon by id
+	 * return deck by id
 	 */
 
-	public Pokemon FindPokemonById(int id) {
+	public Team FindTeamById(int id) {
 
 		Session ses = HibernateUtil.getSession();
 
-		Pokemon teams = ses.get(Pokemon.class, id);
+		Team teams = ses.get(Team.class, id);
 
 		return teams;
 

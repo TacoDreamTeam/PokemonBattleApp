@@ -22,8 +22,8 @@ It must be in your src/main/resources folder. -->
 	
 		<!--  JDBC properties -->
 		<property name="hibernate.connection.username">postgres</property>
-		<property name="hibernate.connection.password">12345678</property>
-		<property name="hibernate.connection.url">jdbc:postgresql://database-1.cg9k2vgda8me.us-east-1.rds.amazonaws.com:5432/postgres?currentSchema=pokemonbattledb</property>
+		<property name="hibernate.connection.password">postgres</property>
+		<property name="hibernate.connection.url">jdbc:postgresql://pokemonbattledb.csi7ymbiazo1.us-east-2.rds.amazonaws.com:5432/postgres?currentSchema=pokemonbattledb</property>
 		
 		<!-- Driver properties -->
 		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
@@ -38,7 +38,7 @@ It must be in your src/main/resources folder. -->
 		<property name="hibernate.connection.pool_size">10</property>
 		
 		<!-- hbm2ddl.auto  this is special property that exports schema DDL to the database when the SessionFactory is created. -->
-		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="hibernate.hbm2ddl.auto">create</property>
 		<!-- CREATE, VALIDATE, UPDATE, NONE -->
 		
 		<!-- CREATE: drops all existing tables and objects with the names provided in annotations, 
