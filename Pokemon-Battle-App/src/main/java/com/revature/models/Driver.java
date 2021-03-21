@@ -2,9 +2,10 @@ package com.revature.models;
 
 import org.hibernate.Session;
 
+import com.revature.repo.PokeDeckDao;
+import com.revature.repo.PokemonDao;
+import com.revature.repo.TrainerDao;
 import com.revature.util.HibernateUtil;
-import com.revtaure.repo.PokeDeckDao;
-import com.revtaure.repo.TrainerDao;
 
 /**
  * @author omars
@@ -36,6 +37,12 @@ public class Driver {
 		pdDao.insertDeck(pd);
 		
 		Pokemon poke=new Pokemon();
+		
+		PokemonDao pDao = new PokemonDao();
+		
+		
+		
+		
 		
 		
 		

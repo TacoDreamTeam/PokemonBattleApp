@@ -1,4 +1,4 @@
-package com.revtaure.repo;
+package com.revature.repo;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -8,7 +8,7 @@ import com.revature.util.HibernateUtil;
 
 public class PokemonDao {
 	
-	public void insertDeck(Pokemon pokemon) {
+	public void insertPokemon(Pokemon pokemon) {
 		
 		Session ses = HibernateUtil.getSession(); // 1. capture the session
 		

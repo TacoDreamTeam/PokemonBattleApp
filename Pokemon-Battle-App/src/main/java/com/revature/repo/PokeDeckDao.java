@@ -1,4 +1,5 @@
-package com.revtaure.repo;
+package com.revature.repo;
+
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
