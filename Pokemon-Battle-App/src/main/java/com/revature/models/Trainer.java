@@ -1,5 +1,7 @@
 package com.revature.models;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -21,6 +23,18 @@ public class Trainer {
 	
 	@Column(name="last_name", nullable = false)
 	private String lastName;
+	
+	// Many to Many relationship
+		@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+		private List<Trades> trades;
+		
+		// Many to Many relationship
+		@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+		private List<Team> team;
+	
+		@OneToOne(cascade =CascadeType.ALL, fetch = FetchType.LAZY)
+		@JoinColumn(name = "PokeDeck_FK")
+		private PokeDeck trainerDeck;
 	
 	public Trainer() {
 		

@@ -23,6 +23,10 @@ public class Trades {
 	@Column(name="pokemon_had_id", nullable = false)
 	private int pokemonHas;
 	
+	@Column(name="trade_status", nullable = false)
+	private String status;
+	
+	
 	public Trades() {
 		
 	}

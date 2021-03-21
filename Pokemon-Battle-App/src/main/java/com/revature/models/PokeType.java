@@ -1,5 +1,9 @@
 package com.revature.models;
+import java.util.List;
+
 import javax.persistence.*;
+
+import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @Table (name="pokeType")
@@ -9,10 +13,8 @@ public class PokeType {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
-	@Column(name="type_name")
-	private String typeName;
-	
 	@Column(name="normal")
+	@ColumnDefault("29")
 	private double normal;
 	
 	@Column(name="fire")
@@ -66,15 +68,18 @@ public class PokeType {
 	@Column(name="fairy")
 	private double fairy;
 	
+
+	
 	public PokeType() {
 		
 	}
 
-	public PokeType(String typeName, double normal, double fire, double water, double grass, double electric,
-			double ice, double fighting, double poison, double ground, double flying, double psychic, double bug,
-			double rock, double ghost, double dragon, double dark, double steel, double fairy) {
+
+
+	public PokeType(double normal, double fire, double water, double grass, double electric, double ice,
+			double fighting, double poison, double ground, double flying, double psychic, double bug, double rock,
+			double ghost, double dragon, double dark, double steel, double fairy) {
 		super();
-		this.typeName = typeName;
 		this.normal = normal;
 		this.fire = fire;
 		this.water = water;
@@ -95,191 +100,349 @@ public class PokeType {
 		this.fairy = fairy;
 	}
 
-	public PokeType(int id, String typeName, double normal, double fire, double water, double grass, double electric,
-			double ice, double fighting, double poison, double ground, double flying, double psychic, double bug,
-			double rock, double ghost, double dragon, double dark, double steel, double fairy) {
-		super();
-		this.id = id;
-		this.typeName = typeName;
-		this.normal = normal;
-		this.fire = fire;
-		this.water = water;
-		this.grass = grass;
-		this.electric = electric;
-		this.ice = ice;
-		this.fighting = fighting;
-		this.poison = poison;
-		this.ground = ground;
-		this.flying = flying;
-		this.psychic = psychic;
-		this.bug = bug;
-		this.rock = rock;
-		this.ghost = ghost;
-		this.dragon = dragon;
-		this.dark = dark;
-		this.steel = steel;
-		this.fairy = fairy;
-	}
 
+
+	/**
+	 * @return the id
+	 */
 	public int getId() {
 		return id;
 	}
 
+
+
+	/**
+	 * @param id the id to set
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getTypeName() {
-		return typeName;
-	}
 
-	public void setTypeName(String typeName) {
-		this.typeName = typeName;
-	}
 
+	/**
+	 * @return the normal
+	 */
 	public double getNormal() {
 		return normal;
 	}
 
+
+
+	/**
+	 * @param normal the normal to set
+	 */
 	public void setNormal(double normal) {
 		this.normal = normal;
 	}
 
+
+
+	/**
+	 * @return the fire
+	 */
 	public double getFire() {
 		return fire;
 	}
 
+
+
+	/**
+	 * @param fire the fire to set
+	 */
 	public void setFire(double fire) {
 		this.fire = fire;
 	}
 
+
+
+	/**
+	 * @return the water
+	 */
 	public double getWater() {
 		return water;
 	}
 
+
+
+	/**
+	 * @param water the water to set
+	 */
 	public void setWater(double water) {
 		this.water = water;
 	}
 
+
+
+	/**
+	 * @return the grass
+	 */
 	public double getGrass() {
 		return grass;
 	}
 
+
+
+	/**
+	 * @param grass the grass to set
+	 */
 	public void setGrass(double grass) {
 		this.grass = grass;
 	}
 
+
+
+	/**
+	 * @return the electric
+	 */
 	public double getElectric() {
 		return electric;
 	}
 
+
+
+	/**
+	 * @param electric the electric to set
+	 */
 	public void setElectric(double electric) {
 		this.electric = electric;
 	}
 
+
+
+	/**
+	 * @return the ice
+	 */
 	public double getIce() {
 		return ice;
 	}
 
+
+
+	/**
+	 * @param ice the ice to set
+	 */
 	public void setIce(double ice) {
 		this.ice = ice;
 	}
 
+
+
+	/**
+	 * @return the fighting
+	 */
 	public double getFighting() {
 		return fighting;
 	}
 
+
+
+	/**
+	 * @param fighting the fighting to set
+	 */
 	public void setFighting(double fighting) {
 		this.fighting = fighting;
 	}
 
+
+
+	/**
+	 * @return the poison
+	 */
 	public double getPoison() {
 		return poison;
 	}
 
+
+
+	/**
+	 * @param poison the poison to set
+	 */
 	public void setPoison(double poison) {
 		this.poison = poison;
 	}
 
+
+
+	/**
+	 * @return the ground
+	 */
 	public double getGround() {
 		return ground;
 	}
 
+
+
+	/**
+	 * @param ground the ground to set
+	 */
 	public void setGround(double ground) {
 		this.ground = ground;
 	}
 
+
+
+	/**
+	 * @return the flying
+	 */
 	public double getFlying() {
 		return flying;
 	}
 
+
+
+	/**
+	 * @param flying the flying to set
+	 */
 	public void setFlying(double flying) {
 		this.flying = flying;
 	}
 
+
+
+	/**
+	 * @return the psychic
+	 */
 	public double getPsychic() {
 		return psychic;
 	}
 
+
+
+	/**
+	 * @param psychic the psychic to set
+	 */
 	public void setPsychic(double psychic) {
 		this.psychic = psychic;
 	}
 
+
+
+	/**
+	 * @return the bug
+	 */
 	public double getBug() {
 		return bug;
 	}
 
+
+
+	/**
+	 * @param bug the bug to set
+	 */
 	public void setBug(double bug) {
 		this.bug = bug;
 	}
 
+
+
+	/**
+	 * @return the rock
+	 */
 	public double getRock() {
 		return rock;
 	}
 
+
+
+	/**
+	 * @param rock the rock to set
+	 */
 	public void setRock(double rock) {
 		this.rock = rock;
 	}
 
+
+
+	/**
+	 * @return the ghost
+	 */
 	public double getGhost() {
 		return ghost;
 	}
 
+
+
+	/**
+	 * @param ghost the ghost to set
+	 */
 	public void setGhost(double ghost) {
 		this.ghost = ghost;
 	}
 
+
+
+	/**
+	 * @return the dragon
+	 */
 	public double getDragon() {
 		return dragon;
 	}
 
+
+
+	/**
+	 * @param dragon the dragon to set
+	 */
 	public void setDragon(double dragon) {
 		this.dragon = dragon;
 	}
 
+
+
+	/**
+	 * @return the dark
+	 */
 	public double getDark() {
 		return dark;
 	}
 
+
+
+	/**
+	 * @param dark the dark to set
+	 */
 	public void setDark(double dark) {
 		this.dark = dark;
 	}
 
+
+
+	/**
+	 * @return the steel
+	 */
 	public double getSteel() {
 		return steel;
 	}
 
+
+
+	/**
+	 * @param steel the steel to set
+	 */
 	public void setSteel(double steel) {
 		this.steel = steel;
 	}
 
+
+
+	/**
+	 * @return the fairy
+	 */
 	public double getFairy() {
 		return fairy;
 	}
 
+
+
+	/**
+	 * @param fairy the fairy to set
+	 */
 	public void setFairy(double fairy) {
 		this.fairy = fairy;
 	}
+
+
 
 	@Override
 	public int hashCode() {
@@ -321,11 +484,12 @@ public class PokeType {
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		temp = Double.doubleToLongBits(steel);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((typeName == null) ? 0 : typeName.hashCode());
 		temp = Double.doubleToLongBits(water);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -372,24 +536,23 @@ public class PokeType {
 			return false;
 		if (Double.doubleToLongBits(steel) != Double.doubleToLongBits(other.steel))
 			return false;
-		if (typeName == null) {
-			if (other.typeName != null)
-				return false;
-		} else if (!typeName.equals(other.typeName))
-			return false;
 		if (Double.doubleToLongBits(water) != Double.doubleToLongBits(other.water))
 			return false;
 		return true;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "PokeType [id=" + id + ", typeName=" + typeName + ", normal=" + normal + ", fire=" + fire + ", water="
-				+ water + ", grass=" + grass + ", electric=" + electric + ", ice=" + ice + ", fighting=" + fighting
-				+ ", poison=" + poison + ", ground=" + ground + ", flying=" + flying + ", psychic=" + psychic + ", bug="
-				+ bug + ", rock=" + rock + ", ghost=" + ghost + ", dragon=" + dragon + ", dark=" + dark + ", steel="
-				+ steel + ", fairy=" + fairy + "]";
+		return "PokeType [id=" + id + ", normal=" + normal + ", fire=" + fire + ", water=" + water + ", grass=" + grass
+				+ ", electric=" + electric + ", ice=" + ice + ", fighting=" + fighting + ", poison=" + poison
+				+ ", ground=" + ground + ", flying=" + flying + ", psychic=" + psychic + ", bug=" + bug + ", rock="
+				+ rock + ", ghost=" + ghost + ", dragon=" + dragon + ", dark=" + dark + ", steel=" + steel + ", fairy="
+				+ fairy + "]";
 	}
+
+	
 	
 	
 }

@@ -1,20 +1,27 @@
 package com.revature.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
-@Table (name="pokeDeck")
+@Table(name="pokeDeck")
 public class PokeDeck {
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
-	@Column(name="trainer_id", nullable = false)
+	@Column(name="trainer_id")
 	private int trainerId;
 	
-	@Column(name="pokemon_id", nullable = false)
+	@Column(name="pokemon_id")
 	private int pokemonId;
+	
+	@OneToMany(mappedBy="trainerDeck", fetch = FetchType.LAZY)
+	private List<Trainer> trainList = new ArrayList<Trainer>();
+
 	
 	public PokeDeck() {
 		

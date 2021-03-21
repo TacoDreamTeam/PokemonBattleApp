@@ -1,5 +1,7 @@
 package com.revature.models;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,6 +20,9 @@ public class Pokemon {
 	
 	@Column(name="type", nullable = false)
 	private int typeId;
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<PokeType> PokeType;
 	
 	public Pokemon() {
 		
