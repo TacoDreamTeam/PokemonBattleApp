@@ -1,10 +1,18 @@
 package com.revature.repo;
 
+<<<<<<< HEAD
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+=======
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import com.revature.models.PokeDeck;
+import com.revature.models.Pokemon;
+>>>>>>> main
 import com.revature.models.Team;
 import com.revature.util.HibernateUtil;
 
@@ -21,7 +29,11 @@ public class TeamDao {
 		tx.commit(); // 4. commit the transaction by utilizing a method from the actual Transaction
 						// interface;
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> main
 	public void updateTeam(Team team) {
 
 		Session ses = HibernateUtil.getSession();
@@ -30,6 +42,7 @@ public class TeamDao {
 		ses.save(team);
 		tx.commit();
 	}
+<<<<<<< HEAD
 
 	/*
 	 * Returns all trainer decks
@@ -58,4 +71,21 @@ public class TeamDao {
 
 	}
 
+=======
+	
+	/*
+	 * remove team
+	 */
+	public void deleteTeam(int id) {
+		Session ses = HibernateUtil.getSession();
+		Transaction tx = ses.beginTransaction();
+		
+		Team team = ses.get(Team.class, id);
+		ses.delete(team);
+		
+		tx.commit();
+	}
+
+	
+>>>>>>> main
 }

@@ -34,12 +34,21 @@ public class TrainerDao {
 		public List<Trainer> selectAllTrainers(){
 			Session ses=HibernateUtil.getSession();
 			
+<<<<<<< HEAD
 			List<Trainer> villList = ses.createQuery("from trainer", Trainer.class).list();
 			
 			return villList;
 			
 			
 			}
+=======
+			List<Trainer> trainerList = ses.createQuery("from Trainer", Trainer.class).list();
+			
+			return trainerList;
+			
+			
+		}
+>>>>>>> main
 		
 		/*
 		 * return trainer by id
@@ -53,7 +62,11 @@ public class TrainerDao {
 			
 			return trainer;
 			
+<<<<<<< HEAD
 			}
+=======
+		}
+>>>>>>> main
 		
 			//return trainer by username
 		
@@ -61,8 +74,13 @@ public class TrainerDao {
 			
 			Session ses=HibernateUtil.getSession();
 			
+<<<<<<< HEAD
 			
 			List<Trainer> trainerList =ses.createNativeQuery("Select * from trainer wehre username='"+username+"'",Trainer.class).list();
+=======
+			// There was a misspelling in where
+			List<Trainer> trainerList =ses.createNativeQuery("Select * from trainer where username='"+username+"'",Trainer.class).list();
+>>>>>>> main
 			
 			//criteria API
 			//create complex queries programatically it only uses OOP
@@ -70,7 +88,11 @@ public class TrainerDao {
 			//List<SuperVillain> villList =ses.createCriteria(SuperVillain.class).add(Restrictions.like("name", name)).list();
 			
 			if(trainerList.size()==0) {
+<<<<<<< HEAD
 				System.out.println("No villain found with that name");
+=======
+				System.out.println("No trainer found with that name");
+>>>>>>> main
 			}
 			
 			return trainerList.get(0);
