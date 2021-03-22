@@ -1,15 +1,19 @@
 package com.revature.repo;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.revature.models.Trainer;
 import com.revature.util.HibernateUtil;
 
+
+
 public class TrainerDao {
 	
 	// we will just create an insert method for Crime
-		public void insert(Trainer trainer) {
+		public void insertTrainer(Trainer trainer) {
 			
 			Session ses = HibernateUtil.getSession(); // 1. capture the session
 			
@@ -22,5 +26,56 @@ public class TrainerDao {
 			
 			tx.commit(); // 4. commit the transaction by utilizing a method from the actual Transaction interface;
 		}
+		
+		/*
+		 * Returns all trainers 
+		 */
+		
+		public List<Trainer> selectAllTrainers(){
+			Session ses=HibernateUtil.getSession();
+			
+			List<Trainer> trainerList = ses.createQuery("from Trainer", Trainer.class).list();
+			
+			return trainerList;
+			
+			
+			}
+		
+		/*
+		 * return trainer by id
+		 */
+		
+		public Trainer trainerFindById(int id) {
+			
+			Session ses=HibernateUtil.getSession();
+			
+			Trainer trainer=ses.get(Trainer.class, id);
+			
+			return trainer;
+			
+			}
+		
+			//return trainer by username
+		
+		public Trainer selectTrainerByUsername(String username) {
+			
+			Session ses=HibernateUtil.getSession();
+			
+			
+			List<Trainer> trainerList =ses.createNativeQuery("Select * from trainer wehre username='"+username+"'",Trainer.class).list();
+			
+			//criteria API
+			//create complex queries programatically it only uses OOP
+			
+			//List<SuperVillain> villList =ses.createCriteria(SuperVillain.class).add(Restrictions.like("name", name)).list();
+			
+			if(trainerList.size()==0) {
+				System.out.println("No villain found with that name");
+			}
+			
+			return trainerList.get(0);
+		}
+		
+		
 
 }
