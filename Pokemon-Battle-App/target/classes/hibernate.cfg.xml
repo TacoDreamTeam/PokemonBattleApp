@@ -22,8 +22,10 @@ It must be in your src/main/resources folder. -->
 	
 		<!--  JDBC properties -->
 		<property name="hibernate.connection.username">postgres</property>
-		<property name="hibernate.connection.password">12345678</property>
-		<property name="hibernate.connection.url">jdbc:postgresql://database-1.cg9k2vgda8me.us-east-1.rds.amazonaws.com:5432/postgres?currentSchema=pokemonbattledb</property>
+		<property name="hibernate.connection.password">postgres</property>
+		<property name="hibernate.connection.url">
+ 			jdbc:postgresql://pokemonbattledb.csi7ymbiazo1.us-east-2.rds.amazonaws.com:5432/postgres?currentSchema="PokemonBattleDB"
+ 		</property>
 		
 		<!-- Driver properties -->
 		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
