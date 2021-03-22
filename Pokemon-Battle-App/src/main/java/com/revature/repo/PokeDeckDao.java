@@ -37,7 +37,7 @@ public class PokeDeckDao {
 				return deckList;
 				
 				
-				}
+			}
 			
 			/*
 			 * return deck by id
@@ -51,7 +51,18 @@ public class PokeDeckDao {
 				
 				return decks;
 				
-				}
+			}
 			
+			/*
+			 * remove pokemon from deck
+			 */
+			public void deleteDeck(int id) {
+				Session ses = HibernateUtil.getSession();
+				Transaction tx = ses.beginTransaction();
 				
+				PokeDeck decks = ses.get(PokeDeck.class, id);
+				ses.delete(decks);
+				
+				tx.commit();
+			}
 }

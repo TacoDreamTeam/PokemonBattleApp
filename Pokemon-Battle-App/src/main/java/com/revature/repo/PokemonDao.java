@@ -32,13 +32,13 @@ public class PokemonDao {
 	}
 
 	/*
-	 * Returns all pokemon decks
+	 * Returns all pokemon
 	 */
 
 	public List<Pokemon> selectAllPokemon() {
 		Session ses = HibernateUtil.getSession();
 
-		List<Pokemon> pokemonList = ses.createQuery("from pokemon", Pokemon.class).list();
+		List<Pokemon> pokemonList = ses.createQuery("from Pokemon", Pokemon.class).list();
 
 		return pokemonList;
 
