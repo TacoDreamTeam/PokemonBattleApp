@@ -31,28 +31,31 @@ public class Trades {
 		
 	}
 
-	public Trades(int wantsPokeId, int pokemonWanter, int pokemonHaser) {
+	public Trades(int wantsPokeId, int pokemonWanter, int pokemonHaser, String status) {
 		super();
 		this.wantsPokeId = wantsPokeId;
 		this.pokemonWanted = pokemonWanter;
 		this.pokemonHas = pokemonHaser;
+		this.status = status;
 	}
 
-	public Trades(int wantsPokeId, int hasPokeId, int pokemonWanter, int pokemonHaser) {
+	public Trades(int wantsPokeId, int hasPokeId, int pokemonWanter, int pokemonHaser, String status) {
 		super();
 		this.wantsPokeId = wantsPokeId;
 		this.hasPokeId = hasPokeId;
 		this.pokemonWanted = pokemonWanter;
 		this.pokemonHas = pokemonHaser;
+		this.status = status;
 	}
 
-	public Trades(int id, int wantsPokeId, int hasPokeId, int pokemonWanter, int pokemonHaser) {
+	public Trades(int id, int wantsPokeId, int hasPokeId, int pokemonWanter, int pokemonHaser, String status) {
 		super();
 		this.id = id;
 		this.wantsPokeId = wantsPokeId;
 		this.hasPokeId = hasPokeId;
 		this.pokemonWanted = pokemonWanter;
 		this.pokemonHas = pokemonHaser;
+		this.status = status;
 	}
 
 	public int getId() {
@@ -95,6 +98,14 @@ public class Trades {
 		this.pokemonHas = pokemonHas;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -103,6 +114,7 @@ public class Trades {
 		result = prime * result + id;
 		result = prime * result + pokemonHas;
 		result = prime * result + pokemonWanted;
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + wantsPokeId;
 		return result;
 	}
@@ -124,6 +136,11 @@ public class Trades {
 			return false;
 		if (pokemonWanted != other.pokemonWanted)
 			return false;
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
+			return false;
 		if (wantsPokeId != other.wantsPokeId)
 			return false;
 		return true;
@@ -132,7 +149,7 @@ public class Trades {
 	@Override
 	public String toString() {
 		return "Trades [id=" + id + ", wantsPokeId=" + wantsPokeId + ", hasPokeId=" + hasPokeId + ", pokemonWanted="
-				+ pokemonWanted + ", pokemonHas=" + pokemonHas + "]";
+				+ pokemonWanted + ", pokemonHas=" + pokemonHas + ", status=" + status + "]";
 	}
 	
 }

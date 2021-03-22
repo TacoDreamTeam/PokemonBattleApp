@@ -27,8 +27,8 @@ public class Driver {
 		Trainer t1=new Trainer("johndoe","pass","john","doe");
 		
 		TrainerDao tDao= new TrainerDao();
-		
-		tDao.insert(t1);
+		// It was complaining about needing to create a class for insert(Trainer)
+		tDao.insertTrainer(t1);
 		
 		PokeDeck pd= new PokeDeck(1,22);
 		
