@@ -1,6 +1,8 @@
 package com.revature.repo;
 
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -9,7 +11,6 @@ import com.revature.util.HibernateUtil;
 
 public class PokeDeckDao {
 	
-	// we will just create an insert method for Crime
 			public void insertDeck(PokeDeck pokedeck) {
 				
 				Session ses = HibernateUtil.getSession(); // 1. capture the session
@@ -24,14 +25,33 @@ public class PokeDeckDao {
 				tx.commit(); // 4. commit the transaction by utilizing a method from the actual Transaction interface;
 			}
 			
+			/*
+			 * Returns all trainer decks 
+			 */
 			
-			public void updateDeck(PokeDeck pokedeck) {
+			public List<PokeDeck> selectAllDecks(){
+				Session ses=HibernateUtil.getSession();
+				
+				List<PokeDeck> deckList = ses.createQuery("from pokedeck", PokeDeck.class).list();
+				
+				return deckList;
+				
+				
+				}
+			
+			/*
+			 * return deck by id
+			 */
+			
+			public PokeDeck FindDeckById(int id) {
 				
 				Session ses=HibernateUtil.getSession();
-				Transaction tx = ses.beginTransaction();
 				
-				ses.save(pokedeck);
-				tx.commit();
-			}
-
+				PokeDeck decks=ses.get(PokeDeck.class, id);
+				
+				return decks;
+				
+				}
+			
+				
 }
