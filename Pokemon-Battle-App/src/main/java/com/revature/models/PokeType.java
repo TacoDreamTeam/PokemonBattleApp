@@ -5,16 +5,20 @@ import javax.persistence.*;
 
 import org.hibernate.annotations.ColumnDefault;
 
+@Cacheable
 @Entity
-@Table (name="pokeType")
+@Table (name="poke_type")
 public class PokeType {
 	@Id
 	@Column(name="id")
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
+	@Column(name="pokemon_type")
+	private String pokemonType;
+	
 	@Column(name="normal")
-	@ColumnDefault("29")
+	//@ColumnDefault("29")
 	private double normal;
 	
 	@Column(name="fire")
@@ -76,6 +80,58 @@ public class PokeType {
 
 
 
+	public PokeType(int id, double normal, double fire, double water, double grass, double electric, double ice,
+			double fighting, double poison, double ground, double flying, double psychic, double bug, double rock,
+			double ghost, double dragon, double dark, double steel, double fairy) {
+		super();
+		this.id=id;
+		this.normal = normal;
+		this.fire = fire;
+		this.water = water;
+		this.grass = grass;
+		this.electric = electric;
+		this.ice = ice;
+		this.fighting = fighting;
+		this.poison = poison;
+		this.ground = ground;
+		this.flying = flying;
+		this.psychic = psychic;
+		this.bug = bug;
+		this.rock = rock;
+		this.ghost = ghost;
+		this.dragon = dragon;
+		this.dark = dark;
+		this.steel = steel;
+		this.fairy = fairy;
+	}
+
+	public PokeType(int id, String type, double normal, double fire, double water, double grass, double electric, double ice,
+			double fighting, double poison, double ground, double flying, double psychic, double bug, double rock,
+			double ghost, double dragon, double dark, double steel, double fairy) {
+		super();
+		this.id=id;
+		this.pokemonType=type;
+		this.normal = normal;
+		this.fire = fire;
+		this.water = water;
+		this.grass = grass;
+		this.electric = electric;
+		this.ice = ice;
+		this.fighting = fighting;
+		this.poison = poison;
+		this.ground = ground;
+		this.flying = flying;
+		this.psychic = psychic;
+		this.bug = bug;
+		this.rock = rock;
+		this.ghost = ghost;
+		this.dragon = dragon;
+		this.dark = dark;
+		this.steel = steel;
+		this.fairy = fairy;
+	}
+
+	
 	public PokeType(double normal, double fire, double water, double grass, double electric, double ice,
 			double fighting, double poison, double ground, double flying, double psychic, double bug, double rock,
 			double ghost, double dragon, double dark, double steel, double fairy) {
@@ -98,6 +154,42 @@ public class PokeType {
 		this.dark = dark;
 		this.steel = steel;
 		this.fairy = fairy;
+	}
+
+	public PokeType(String type, double normal, double fire, double water, double grass, double electric, double ice,
+			double fighting, double poison, double ground, double flying, double psychic, double bug, double rock,
+			double ghost, double dragon, double dark, double steel, double fairy) {
+		super();
+		this.pokemonType=type;
+		this.normal = normal;
+		this.fire = fire;
+		this.water = water;
+		this.grass = grass;
+		this.electric = electric;
+		this.ice = ice;
+		this.fighting = fighting;
+		this.poison = poison;
+		this.ground = ground;
+		this.flying = flying;
+		this.psychic = psychic;
+		this.bug = bug;
+		this.rock = rock;
+		this.ghost = ghost;
+		this.dragon = dragon;
+		this.dark = dark;
+		this.steel = steel;
+		this.fairy = fairy;
+	}
+
+
+	public String getType() {
+		return pokemonType;
+	}
+
+
+
+	public void setType(String pokemonType) {
+		this.pokemonType = pokemonType;
 	}
 
 
@@ -445,6 +537,17 @@ public class PokeType {
 
 
 	@Override
+	public String toString() {
+		return "PokeType [id=" + id + ", pokemonType=" + pokemonType + ", normal=" + normal + ", fire=" + fire + ", water=" + water
+				+ ", grass=" + grass + ", electric=" + electric + ", ice=" + ice + ", fighting=" + fighting
+				+ ", poison=" + poison + ", ground=" + ground + ", flying=" + flying + ", psychic=" + psychic + ", bug="
+				+ bug + ", rock=" + rock + ", ghost=" + ghost + ", dragon=" + dragon + ", dark=" + dark + ", steel="
+				+ steel + ", fairy=" + fairy + "]";
+	}
+
+
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -484,6 +587,7 @@ public class PokeType {
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		temp = Double.doubleToLongBits(steel);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((pokemonType == null) ? 0 : pokemonType.hashCode());
 		temp = Double.doubleToLongBits(water);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
@@ -536,6 +640,11 @@ public class PokeType {
 			return false;
 		if (Double.doubleToLongBits(steel) != Double.doubleToLongBits(other.steel))
 			return false;
+		if (pokemonType == null) {
+			if (other.pokemonType != null)
+				return false;
+		} else if (!pokemonType.equals(other.pokemonType))
+			return false;
 		if (Double.doubleToLongBits(water) != Double.doubleToLongBits(other.water))
 			return false;
 		return true;
@@ -543,14 +652,7 @@ public class PokeType {
 
 
 
-	@Override
-	public String toString() {
-		return "PokeType [id=" + id + ", normal=" + normal + ", fire=" + fire + ", water=" + water + ", grass=" + grass
-				+ ", electric=" + electric + ", ice=" + ice + ", fighting=" + fighting + ", poison=" + poison
-				+ ", ground=" + ground + ", flying=" + flying + ", psychic=" + psychic + ", bug=" + bug + ", rock="
-				+ rock + ", ghost=" + ghost + ", dragon=" + dragon + ", dark=" + dark + ", steel=" + steel + ", fairy="
-				+ fairy + "]";
-	}
+	
 
 	
 	
