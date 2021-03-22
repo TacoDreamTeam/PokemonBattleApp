@@ -32,21 +32,13 @@ public class PokemonDao {
 	}
 
 	/*
-<<<<<<< HEAD
-	 * Returns all pokemon decks
-=======
 	 * Returns all pokemon
->>>>>>> main
 	 */
 
 	public List<Pokemon> selectAllPokemon() {
 		Session ses = HibernateUtil.getSession();
 
-<<<<<<< HEAD
-		List<Pokemon> pokemonList = ses.createQuery("from pokemon", Pokemon.class).list();
-=======
 		List<Pokemon> pokemonList = ses.createQuery("from Pokemon", Pokemon.class).list();
->>>>>>> main
 
 		return pokemonList;
 

@@ -37,11 +37,7 @@ public class PokeDeckDao {
 				return deckList;
 				
 				
-<<<<<<< HEAD
-				}
-=======
 			}
->>>>>>> main
 			
 			/*
 			 * return deck by id
@@ -50,16 +46,6 @@ public class PokeDeckDao {
 			public PokeDeck FindDeckById(int id) {
 				
 				Session ses=HibernateUtil.getSession();
-<<<<<<< HEAD
-				
-				PokeDeck decks=ses.get(PokeDeck.class, id);
-				
-				return decks;
-				
-				}
-			
-				
-=======
 				
 				PokeDeck decks=ses.get(PokeDeck.class, id);
 				
@@ -79,5 +65,4 @@ public class PokeDeckDao {
 				
 				tx.commit();
 			}
->>>>>>> main
 }
