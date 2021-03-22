@@ -63,4 +63,15 @@ public class PokemonTypeDao {
 		tx.commit();
 	}
 	
+	
+	public double effectivness(String type1, String type2) {
+		
+		//1.) Capture the session
+		Session ses=HibernateUtil.getSession();
+	
+		//2.) Get data
+		//System.out.println("effective:");
+		return(double) ses.createQuery("SELECT t."+type2+" FROM PokeType t WHERE pokemonType='"+type1+"'").uniqueResult();
+	}
+	
 }
