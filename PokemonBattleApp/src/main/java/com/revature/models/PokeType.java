@@ -11,7 +11,8 @@ import org.hibernate.annotations.ColumnDefault;
 public class PokeType {
 	@Id
 	@Column(name="id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="PokeTypeSequence")
+	@SequenceGenerator(name="PokeTypeSequence", sequenceName="HERO_SEQ", allocationSize=1)
 	private int id;
 	
 	@Column(name="pokemon_type")

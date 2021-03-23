@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import com.revature.models.PokeDeck;
 import com.revature.models.Pokemon;
 import com.revature.models.Team;
+import com.revature.models.Trainer;
 import com.revature.util.HibernateUtil;
 
 public class TeamDao {
@@ -22,6 +23,17 @@ public class TeamDao {
 
 		tx.commit(); // 4. commit the transaction by utilizing a method from the actual Transaction
 						// interface;
+	}
+	
+	
+	public List<Team> selectAllTeams(){
+		Session ses=HibernateUtil.getSession();
+		
+		List<Team> teamList = ses.createQuery("from Team", Team.class).list();
+		
+		return teamList;
+		
+		
 	}
 	
 	public void updateTeam(Team team) {
