@@ -1,5 +1,7 @@
 package com.revature.repo;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -44,5 +46,12 @@ public class TeamDao {
 		tx.commit();
 	}
 
-	
+	public List<Team> selectAllTeam() {
+		Session ses = HibernateUtil.getSession();
+
+		List<Team> deckList = ses.createQuery("from team", Team.class).list();
+
+		return deckList;
+
+	}
 }
