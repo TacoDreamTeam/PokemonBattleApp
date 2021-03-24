@@ -37,7 +37,7 @@ public class PokeDeckDao {
 			public List<PokeDeck> selectAllDecks(){
 				Session ses=HibernateUtil.getSession();
 				
-				List<PokeDeck> deckList = ses.createQuery("from pokedeck", PokeDeck.class).list();
+				List<PokeDeck> deckList = ses.createQuery("from PokeDeck", PokeDeck.class).list();
 				
 				return deckList;
 				
