@@ -23,13 +23,12 @@
 	<!-- Context Scanning: it will scan all of the packages to be managed -->
 		<!-- Here we scan all of the classes, etc. -->
 	<context:component-scan
-		base-package="com.revature.repository" />
+		base-package="com.revature.repo" />
 	<context:component-scan
 		base-package="com.revature.service" />
 	<context:component-scan
 		base-package="com.revature.controller" />
-	<context:component-scan
-		base-package="com.revature.view" />
+	<!-- <context:component-scan base-package="com.revature.view" />-->
 	
 	
 	<!-- dataSource bean (JDBC properties) -->
