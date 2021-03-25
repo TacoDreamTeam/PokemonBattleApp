@@ -1,9 +1,20 @@
 .example-card {
   max-width: 400px;
+
 }
 
 .example-header-image {
   background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/fe48665f-9fb2-4bc1-b2df-60d8fbdd82a0/dcyr9or-c77d5729-8279-4837-868c-8e664b50fe87.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvZmU0ODY2NWYtOWZiMi00YmMxLWIyZGYtNjBkOGZiZGQ4MmEwXC9kY3lyOW9yLWM3N2Q1NzI5LTgyNzktNDgzNy04NjhjLThlNjY0YjUwZmU4Ny5naWYifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.uJ9D8E8XbjfPj6DShnQv_CawPRjLAPHjQoKkcnWFxjY');
   background-size: cover;
+}
+
+.hpStat{
+  width: ;
+  background-color: green;
+}
+
+.attack{
+  width: 80%;
+  background-color: green;
 }
 

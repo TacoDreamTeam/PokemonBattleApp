@@ -19,6 +19,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
 import { MessageComponent } from './message/message.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { MessageComponent } from './message/message.component';
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
+    MatPaginatorModule
   ],
   providers: [
 
