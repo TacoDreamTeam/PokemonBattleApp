@@ -1,1 +1,33 @@
-<p>pokemon works!</p>
+<!-- <div class="grid">
+  <div class="box" *ngFor="let pokemon of pokemons">
+    <img [src]="pokemon.sprites.front_default" alt="">
+    <p>{{pokemon.name}}</p>
+  </div>
+</div> -->
+
+
+<div class="container">
+<mat-grid-list cols="4" rowHeight="3:5" >
+  <mat-grid-tile *ngFor="let pokemon of pokemons">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{pokemon.name | uppercase}}</mat-card-title>
+        <mat-card-subtitle>{{pokemon.species.name | uppercase}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="pokemon.sprites.front_default" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <div [ngStyle]="{'width':pokemon.stats[0].base_stat}">HP:{{pokemon.stats[0].base_stat}}</div>
+
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary">{{pokemon.types[0].type.name}}</button>
+        <button mat-raised-button color="accent">{{pokemon.abilities[0].ability.name}}</button>
+      </mat-card-actions>
+    </mat-card>
+
+
+  </mat-grid-tile>
+
+</mat-grid-list>
+</div>
