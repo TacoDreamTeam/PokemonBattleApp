@@ -8,10 +8,11 @@ import { PokemonService } from '../services/pokemon.service';
 })
 export class PokemonComponent implements OnInit {
   pokemons: any[] = [];
-  page=1;
-  totalPokemon=0;
+ 
 
-  constructor(private pokemonService: PokemonService) {}
+  constructor(private pokemonService: PokemonService ) {
+
+  }
 
   ngOnInit() {
     this.getPokemons();
@@ -19,7 +20,7 @@ export class PokemonComponent implements OnInit {
 
   getPokemons(): void {
     this.pokemonService.getPokemon().subscribe((res: any) => {
-      this.totalPokemon=res.count;
+
       res.results.forEach((data) => {
         this.pokemonService.getMoreData(data.name).subscribe((uniqRes: any) => {
           this.pokemons.push(uniqRes);
