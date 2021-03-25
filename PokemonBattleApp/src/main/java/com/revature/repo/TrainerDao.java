@@ -27,6 +27,14 @@ public class TrainerDao {
 			tx.commit(); // 4. commit the transaction by utilizing a method from the actual Transaction interface;
 		}
 		
+		public void updateTrainer(Trainer trainer) {
+			Session ses = HibernateUtil.getSession();
+			Transaction tx = ses.beginTransaction();
+			
+			ses.update(trainer);
+			tx.commit();
+		}
+		
 		/*
 		 * Returns all trainers 
 		 */
@@ -76,6 +84,13 @@ public class TrainerDao {
 			return trainerList.get(0);
 		}
 		
+		public void deleteTrainer(Trainer trainer) {
+			Session ses = HibernateUtil.getSession();
+			Transaction tx = ses.beginTransaction();
+			
+			ses.delete(trainer);
+			tx.commit();
+		}
 		
 
 }

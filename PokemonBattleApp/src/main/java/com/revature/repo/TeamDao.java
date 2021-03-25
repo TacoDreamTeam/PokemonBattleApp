@@ -25,6 +25,15 @@ public class TeamDao {
 						// interface;
 	}
 	
+	public Team teamFindById(int id) {
+		
+		Session ses=HibernateUtil.getSession();
+		
+		Team team=ses.get(Team.class, id);
+		
+		return team;
+		
+	}
 	
 	public List<Team> selectAllTeams(){
 		Session ses=HibernateUtil.getSession();
@@ -58,12 +67,4 @@ public class TeamDao {
 		tx.commit();
 	}
 
-	public List<Team> selectAllTeam() {
-		Session ses = HibernateUtil.getSession();
-
-		List<Team> deckList = ses.createQuery("from team", Team.class).list();
-
-		return deckList;
-
-	}
 }

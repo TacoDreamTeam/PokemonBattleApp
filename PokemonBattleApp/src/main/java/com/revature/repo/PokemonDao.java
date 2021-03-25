@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.revature.models.PokeDeck;
 import com.revature.models.Pokemon;
 import com.revature.util.HibernateUtil;
 
@@ -56,6 +57,15 @@ public class PokemonDao {
 
 		return teams;
 
+	}
+	
+	public void deletePokemon(Pokemon pokemon) {
+		Session ses = HibernateUtil.getSession();
+		Transaction tx = ses.beginTransaction();
+		
+		ses.delete(pokemon);
+		
+		tx.commit();
 	}
 
 }

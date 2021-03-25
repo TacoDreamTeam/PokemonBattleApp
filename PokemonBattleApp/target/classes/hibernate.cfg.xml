@@ -40,7 +40,7 @@ It must be in your src/main/resources folder. -->
 		<property name="hibernate.connection.pool_size">10</property>
 		
 		<!-- hbm2ddl.auto  this is special property that exports schema DDL to the database when the SessionFactory is created. -->
-		<property name="hibernate.hbm2ddl.auto">create</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
 		<!-- CREATE, VALIDATE, UPDATE, NONE -->
 		
 		<!-- CREATE: drops all existing tables and objects with the names provided in annotations, 

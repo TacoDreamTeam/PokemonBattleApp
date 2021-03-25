@@ -54,6 +54,18 @@ public class PokeDeckDao {
 			}
 			
 			/*
+			 * update the trainer's Deck
+			 */
+			public void updateDeck(PokeDeck deck) {
+				Session ses = HibernateUtil.getSession();
+				Transaction tx = ses.beginTransaction();
+				
+				ses.update(deck);
+				
+				tx.commit();
+			}
+			
+			/*
 			 * remove pokemon from deck
 			 */
 			public void deleteDeck(int id) {
