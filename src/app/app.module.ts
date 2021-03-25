@@ -21,6 +21,7 @@ import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.componen
 import { MessageComponent } from './message/message.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     TrainerDashComponent,
     PokemonDetailComponent,
     MessageComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

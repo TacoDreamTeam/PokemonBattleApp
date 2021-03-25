@@ -17,7 +17,7 @@ export class PokemonService {
   constructor(private http:HttpClient,private messageService: MessageService) { }
 
  getPokemon(){
-   return this.http.get(`https://pokeapi.co/api/v2/pokemon?limit=10`)
+   return this.http.get(`https://pokeapi.co/api/v2/pokemon?limit=30`)
  }
 
 getMoreData(name:string){
