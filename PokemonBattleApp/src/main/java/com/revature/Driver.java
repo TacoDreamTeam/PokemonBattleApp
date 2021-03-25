@@ -41,7 +41,7 @@ public class Driver {
 		PokeDeckDao deckDao = new PokeDeckDao();
 		deckDao.insertDeck(pdFort1);
 		
-		Pokemon pokemon1 = new Pokemon(3, 1, "Something Pokemon", 2);
+		Pokemon pokemon1 = new Pokemon(3, 1, "Something Pokemon", "something-ness");
 		PokemonDao pDao = new PokemonDao();
 		pDao.insertPokemon(pokemon1);
 		
@@ -56,13 +56,13 @@ public class Driver {
 		
 		Trainer t2 = new Trainer("pokeBlue", "passcode", "Jane", "Doe");
 		PokeDeck pdFor2 = new PokeDeck(2, 23);
-		Pokemon pokemon2 = new Pokemon(2, "Charzard", 3);
+		Pokemon pokemon2 = new Pokemon(2, "Charzard", "fire");
 		Team t2Team = new Team(2, 23, 45, 77);
 		Trades secondTrade = new Trades(2, 77, 44, "Denied");
 		
 		Trainer t3 = new Trainer("pokeRed", "pass1234", "Alex", "Bell");
 		PokeDeck pdFor3 = new PokeDeck(3, 13);
-		Pokemon pokemon3 = new Pokemon(3, "Squirtle", 7);
+		Pokemon pokemon3 = new Pokemon(3, "Squirtle", "water");
 		Team t3Team = new Team(3, 55, 21, 89, 120, 20);
 		
 

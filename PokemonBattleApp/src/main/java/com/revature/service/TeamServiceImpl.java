@@ -40,7 +40,7 @@ public class TeamServiceImpl implements TeamService {
 
 	@Override
 	public List<Team> selectAllTeam() {
-		return teamDao.selectAllTeam();
+		return teamDao.selectAllTeams();
 	}
 
 }

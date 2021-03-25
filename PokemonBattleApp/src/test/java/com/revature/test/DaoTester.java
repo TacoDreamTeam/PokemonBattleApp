@@ -34,7 +34,7 @@ public class DaoTester {
 	//All data for the first trainer
 	Trainer t1 = new Trainer(800,"johndoe", "pass", "john", "doe"); //id, username, password, firstname, lastname
 	PokeDeck pdFor1 = new PokeDeck(700, 800, 600); 				//id, trainers id, pokemon id
-	Pokemon pokemon1 = new Pokemon(600, 1, "Something Pokemon", 2); //id, pokeApi id, poke name, type id
+	Pokemon pokemon1 = new Pokemon(600, 1, "Something Pokemon", "something-ness"); //id, pokeApi id, poke name, type id
 	Team t1Team = new Team(850, 800, 600, 0, 0, 0, 0, 0); 			//id, trainer id, poke id 1-6
 	Trades trade = new Trades(300, 800, 801, 600, 601,"Pending");   //id, trainer id who wants request, trainer id who is recieving request, 
 																    //pokemon id that belongs to the first trainer, pokemon id that belongs to the seond guy, 
@@ -43,14 +43,14 @@ public class DaoTester {
 	//All the data associated with the second trainer
 	Trainer t2 = new Trainer(801,"pokeBlue", "passcode", "Jane", "Doe");
 	PokeDeck pdFor2 = new PokeDeck(701, 801, 601);
-	Pokemon pokemon2 = new Pokemon(601, 6, "Charizard", 3);
+	Pokemon pokemon2 = new Pokemon(601, 6, "Charizard", "fire");
 	Team t2Team = new Team(851, 801, 601, 0, 0, 0, 0, 0);
 	Trades secondTrade = new Trades(301, 801, 802, 601, 602, "Denied");
 	
 	//All data associated with the third trainer
 	Trainer t3 = new Trainer(802, "pokeRed", "pass1234", "Alex", "Bell");
 	PokeDeck pdFor3 = new PokeDeck(702, 802, 602);
-	Pokemon pokemon3 = new Pokemon(602, 7, "Squirtle", 7);
+	Pokemon pokemon3 = new Pokemon(602, 7, "Squirtle", "water");
 	Team t3Team = new Team(852, 802, 602, 0, 0, 0, 0, 0);
 	
 	//List to be filled for testing purposes
