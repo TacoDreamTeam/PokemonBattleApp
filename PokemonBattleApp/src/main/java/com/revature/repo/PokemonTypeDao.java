@@ -5,10 +5,14 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.models.PokeType;
 import com.revature.util.HibernateUtil;
 
+@Repository("PokemonTypeDao")
+@Transactional
 public class PokemonTypeDao {
 
 	//Inserting the PokemonTypes into the DB

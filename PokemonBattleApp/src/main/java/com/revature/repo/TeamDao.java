@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.models.PokeDeck;
 import com.revature.models.Pokemon;
@@ -11,6 +13,8 @@ import com.revature.models.Team;
 import com.revature.models.Trainer;
 import com.revature.util.HibernateUtil;
 
+@Repository("TeamDao")
+@Transactional
 public class TeamDao {
 
 	public void insertTeam(Team team) {

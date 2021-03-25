@@ -27,43 +27,46 @@ public class Driver {
 	}
 
 	public static void initTrainer() {
-
-		Trainer t1 = new Trainer("johndoe", "pass", "john", "doe");
+		
+		
+		
+		
+		Trainer t1 = new Trainer(1,"johndoe", "pass", "john", "doe");
 		TrainerDao tDao = new TrainerDao();
-		// It was complaining about needing to create a class for insert(Trainer)
 		tDao.insertTrainer(t1);
-
 		List<Trainer> trainer = new ArrayList<Trainer>();
-
 		trainer.add(t1);
-
-		PokeDeck pd = new PokeDeck(1, 22);
-		PokeDeckDao pdDao = new PokeDeckDao();
-		pdDao.insertDeck(pd);
-
-		List<PokeDeck> pokeDeck = new ArrayList<PokeDeck>();
-		pokeDeck.add(pd);
-
-		Pokemon poke = new Pokemon(1, " Pokemon", 2);
+		
+		PokeDeck pdFort1 = new PokeDeck(2,1, 22);
+		PokeDeckDao deckDao = new PokeDeckDao();
+		deckDao.insertDeck(pdFort1);
+		
+		Pokemon pokemon1 = new Pokemon(3, 1, "Something Pokemon", 2);
 		PokemonDao pDao = new PokemonDao();
-		pDao.insertPokemon(poke);
-
-		Team t = new Team(t1.getTrainerId(), 22, 33, 44, 11);
+		pDao.insertPokemon(pokemon1);
+		
+		Team t1Team = new Team(1, 1, 22, 33, 44, 11);
 		TeamDao teamDao = new TeamDao();
-		teamDao.insertTeam(t);
+		teamDao.insertTeam(t1Team);
 		
 		
-		Trades trade=new Trades(1,22,1,"Accept");
+		Trades trade = new Trades(5, 1,22,1,"Accept");
 		TradesDao tradeDao=new TradesDao();
-		
 		tradeDao.insertTrades(trade);
 		
+		Trainer t2 = new Trainer("pokeBlue", "passcode", "Jane", "Doe");
+		PokeDeck pdFor2 = new PokeDeck(2, 23);
+		Pokemon pokemon2 = new Pokemon(2, "Charzard", 3);
+		Team t2Team = new Team(2, 23, 45, 77);
+		Trades secondTrade = new Trades(2, 77, 44, "Denied");
+		
+		Trainer t3 = new Trainer("pokeRed", "pass1234", "Alex", "Bell");
+		PokeDeck pdFor3 = new PokeDeck(3, 13);
+		Pokemon pokemon3 = new Pokemon(3, "Squirtle", 7);
+		Team t3Team = new Team(3, 55, 21, 89, 120, 20);
 		
 
-		System.out.println(tDao.selectAllTrainers());
-		System.out.println(pdDao.selectAllDecks());
-		System.out.println(pDao.selectAllPokemon());
-		System.out.println(teamDao.selectAllTeams());
+
 	}
 
 }

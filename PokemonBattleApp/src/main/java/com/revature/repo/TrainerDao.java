@@ -4,12 +4,15 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.models.Trainer;
 import com.revature.util.HibernateUtil;
 
 
-
+@Repository("TrainerDao")
+@Transactional
 public class TrainerDao {
 	
 	// we will just create an insert method for Crime

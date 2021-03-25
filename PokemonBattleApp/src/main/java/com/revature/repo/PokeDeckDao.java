@@ -3,12 +3,17 @@ package com.revature.repo;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 
 import com.revature.models.PokeDeck;
 import com.revature.util.HibernateUtil;
 
+@Repository("PokeDeckDao")
+@Transactional
 public class PokeDeckDao {
 	
 			public void insertDeck(PokeDeck pokedeck) {
