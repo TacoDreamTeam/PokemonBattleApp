@@ -21,3 +21,10 @@ a:link{
   text-align: center;
 }
 
+mat-toolbar{
+  background-color: black;
+}
+
+mat-icon{
+  color: whitesmoke;
+}
