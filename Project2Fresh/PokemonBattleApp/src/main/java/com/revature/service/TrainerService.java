@@ -14,9 +14,9 @@ public interface TrainerService {
 	
 	public Trainer selectTrainerByUsername(String username);
 
-	public void deleteTrainer(int id);
+	public boolean deleteTrainer(int id);
 	
-	public void updateTrainer(Trainer trainer);
+	public boolean updateTrainer(Trainer trainer);
 	
 	public Trainer login(String trainerUsername, String password);
 	

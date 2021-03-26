@@ -38,24 +38,24 @@ public class TradesControllerImpl implements TradesController {
 	}
 
 	@PostMapping("/TradesUpdate")
-	public void updateTrades(@RequestBody Trades trade) {
-		tradesService.updateTrades(trade);
-
+	public @ResponseBody ClientMessage updateTrades(@RequestBody Trades trade) {
+		
+		return (tradesService.updateTrades(trade)) ? REGISTRATION_SUCCESSFUL : SOMETHING_WRONG;
 	}
 
 	@GetMapping("/TradesGetAll")
-	public List<Trades> selectAllTrades() {
+	public @ResponseBody List<Trades> selectAllTrades() {
 		return tradesService.selectAllTrades();
 	}
 
 	@PostMapping("/TradesGetById")
-	public Trades FindTradesById(@RequestBody int id) {
-		return tradesService.FindTradesById(id);
+	public @ResponseBody Trades FindTradesById(@RequestBody Trades trade) {
+		return tradesService.FindTradesById(trade.getId());
 	}
 
 	@PostMapping("/TradesDelete")
-	public void deleteTrades(@RequestBody int id) {
-		tradesService.deleteTrades(id);
+	public @ResponseBody ClientMessage deleteTrades(@RequestBody Trades trade) {
+		return (tradesService.deleteTrades(trade.getId())) ? REGISTRATION_SUCCESSFUL : SOMETHING_WRONG;
 	}
 
 }

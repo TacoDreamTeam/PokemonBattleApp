@@ -97,6 +97,13 @@ public class Trainer {
 		this.lastName = lastName;
 	}
 
+
+	@Override
+	public String toString() {
+		return "Trainer [trainerId=" + trainerId + ", username=" + username + ", password=" + password + ", firstName="
+				+ firstName + ", lastName=" + lastName + "]";
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -143,10 +150,7 @@ public class Trainer {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "Trainer [trainerId=" + trainerId + ", username=" + username + ", password=" + password + ", firstName="
-				+ firstName + ", lastName=" + lastName + "]";
-	}
+	
+	
 	
 }

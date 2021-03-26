@@ -3,6 +3,7 @@ package com.revature.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import static com.revature.util.ClientMessageUtil.*;
@@ -43,19 +46,21 @@ public class PokeDeckControllerImpl implements PokeDeckController {
 	}
 
 	@PostMapping("/PokeDeckGetById")
-	public @ResponseBody PokeDeck FindDeckById(@RequestBody int id, HttpServletRequest request) {
+	public @ResponseBody PokeDeck FindDeckById(@RequestBody PokeDeck pokedeck, HttpServletRequest request) {
 		request.getSession();
-		return pokeDeckService.FindDeckById(id);
-	}
-
-	@PostMapping("/PokeDeckDelete")
-	public void deleteDeck(int id) {
-		pokeDeckService.deleteDeck(id);
+		return pokeDeckService.FindDeckById(pokedeck.getId());
 	}
 
 	@PostMapping("/PokeDeckUpdate")
-	public void updateDeck(@RequestBody PokeDeck pokedeck) {
-		pokeDeckService.updateDeck(pokedeck);
+	public @ResponseBody ClientMessage updateDeck(@RequestBody PokeDeck pokedeck) {
+		return(pokeDeckService.updateDeck(pokedeck)) ? REGISTRATION_SUCCESSFUL : SOMETHING_WRONG;
 	}
+	
+	@PostMapping("/PokeDeckDelete")
+	public @ResponseBody ClientMessage deleteDeck(@RequestBody PokeDeck pokedeck) {
+		return(pokeDeckService.deleteDeck(pokedeck.getId())) ? REGISTRATION_SUCCESSFUL : SOMETHING_WRONG;
+	}
+
+
 
 }

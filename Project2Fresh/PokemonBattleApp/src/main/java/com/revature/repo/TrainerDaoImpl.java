@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.models.PokeDeck;
+import com.revature.models.Team;
 import com.revature.models.Trainer;
 
 
@@ -42,8 +43,8 @@ public class TrainerDaoImpl implements TrainerDao {
 	@Override
 	public Trainer trainerFindById(int id) {
 		try {
-			return (Trainer) sessionFactory.getCurrentSession().createCriteria(Trainer.class).add(Restrictions.like("id", id))
-					.list().get(0);
+			//return (Trainer) sessionFactory.getCurrentSession().createCriteria(Trainer.class).add(Restrictions.like("id", id)).list().get(0);
+			return (Trainer) sessionFactory.getCurrentSession().get(Trainer.class, id);
 		} catch (IndexOutOfBoundsException e) {
 			//logger.debug(e);
 			return null;
@@ -74,11 +75,11 @@ public class TrainerDaoImpl implements TrainerDao {
 	@Override
 	public void deleteTrainer(int id) {
 		try {
-			Trainer trainer=(Trainer) sessionFactory.getCurrentSession().createCriteria(Trainer.class).add(Restrictions.like("id", id))
-					.list().get(0);
+			//Trainer trainer=(Trainer) sessionFactory.getCurrentSession().createCriteria(Trainer.class).add(Restrictions.like("id", id)).list().get(0);
+			Trainer trainer= (Trainer) sessionFactory.getCurrentSession().get(Trainer.class, id);
 			sessionFactory.getCurrentSession().delete(trainer);
 		} catch (IndexOutOfBoundsException e) {
-			//logger.debug(e);	
+			logger.debug(e);	
 		
 		}
 	}

@@ -1,8 +1,10 @@
 package com.revature.controller;
 
+import com.revature.models.EffectiveTemplate;
+
 public interface PokemonTypeController {
 
 	public void insert();
 
-	public double effectivness(String type1, String type2);
+	public double effectivness(EffectiveTemplate effectiveTemplate);
 }

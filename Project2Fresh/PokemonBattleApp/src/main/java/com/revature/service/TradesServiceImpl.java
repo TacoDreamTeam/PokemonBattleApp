@@ -31,8 +31,9 @@ public class TradesServiceImpl implements TradesService {
 	}
 
 	@Override
-	public void updateTrades(Trades trade) {
+	public boolean updateTrades(Trades trade) {
 		tradesDao.updateTrades(trade);
+		return trade.equals(tradesDao.FindTradesById(trade.getId()));
 	}
 
 	@Override
@@ -46,8 +47,9 @@ public class TradesServiceImpl implements TradesService {
 	}
 
 	@Override
-	public void deleteTrades(int id) {
+	public boolean deleteTrades(int id) {
 		tradesDao.deleteTrades(id);
+		return tradesDao.FindTradesById(id)==null;
 	}
 
 }

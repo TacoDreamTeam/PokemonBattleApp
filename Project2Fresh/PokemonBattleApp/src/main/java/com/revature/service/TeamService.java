@@ -10,8 +10,10 @@ public interface TeamService {
 
 	public List<Team> selectAllTeams();
 	
-	public void updateTeam(Team team);
+	public Team FindTeamById(int id);
 	
-	public void deleteTeam(int id); 
+	public boolean updateTeam(Team team);
+	
+	public boolean deleteTeam(int id); 
 	
 }

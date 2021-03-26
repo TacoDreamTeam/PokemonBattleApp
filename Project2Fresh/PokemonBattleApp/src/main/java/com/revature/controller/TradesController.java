@@ -9,12 +9,12 @@ public interface TradesController {
 
 	public ClientMessage insertTrades(Trades trade);
 	
-	public void updateTrades(Trades trade);
+	public ClientMessage updateTrades(Trades trade);
 	
 	public List<Trades> selectAllTrades();
 	
-	public Trades FindTradesById(int id);
+	public Trades FindTradesById(Trades trade);
 	
-	public void deleteTrades(int id);
+	public ClientMessage deleteTrades(Trades trade);
 
 }

@@ -41,33 +41,31 @@ public class PokeDeckDaoImpl implements PokeDeckDao {
 	@Override
 	public PokeDeck FindDeckById(int id) {
 		try {
-			return (PokeDeck) sessionFactory.getCurrentSession().createCriteria(PokeDeck.class).add(Restrictions.like("id", id))
-					.list().get(0);
+			//return (PokeDeck) sessionFactory.getCurrentSession().createCriteria(PokeDeck.class).add(Restrictions.like("id", id)).list().get(0);
+			return (PokeDeck) sessionFactory.getCurrentSession().get(PokeDeck.class, id);
 		} catch (IndexOutOfBoundsException e) {
 			//logger.debug(e);
 			return null;
 		}
 	}
-
-	@Override
-	public void deleteDeck(int id) {
-		try {
-			PokeDeck decks=(PokeDeck) sessionFactory.getCurrentSession().createCriteria(PokeDeck.class).add(Restrictions.like("id", id))
-					.list().get(0);
-			sessionFactory.getCurrentSession().delete(decks);
-		} catch (IndexOutOfBoundsException e) {
-			//logger.debug(e);	
-		}
-	}
-
+	
 	@Override
 	public void updateDeck(PokeDeck pokedeck) {
 		try {
 			sessionFactory.getCurrentSession().update(pokedeck);
 		}catch (EntityNotFoundException e){
-			System.out.println(e);
+			logger.debug(e);
 		}
-		
 	}
-
+	
+	@Override
+	public void deleteDeck(int id) {
+		try {
+			//PokeDeck decks=(PokeDeck) sessionFactory.getCurrentSession().createCriteria(PokeDeck.class).add(Restrictions.like("id", id)).list().get(0);
+			PokeDeck decks=(PokeDeck) sessionFactory.getCurrentSession().get(PokeDeck.class, id);
+			sessionFactory.getCurrentSession().delete(decks);
+		} catch (IndexOutOfBoundsException e) {
+			logger.debug(e);	
+		}
+	}
 }

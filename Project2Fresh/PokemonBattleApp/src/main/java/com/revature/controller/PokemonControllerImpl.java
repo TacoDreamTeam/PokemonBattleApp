@@ -30,27 +30,38 @@ public class PokemonControllerImpl implements PokemonController {
 	
 	@PostMapping("/PokemonInsert")
 	public @ResponseBody ClientMessage insertPokemon(@RequestBody Pokemon pokemon) {
+		System.out.println("adding the pokemon (control)");
+		logger.debug("adding the pokemon (control)");
 		return(pokemonService.insertPokemon(pokemon)) ? REGISTRATION_SUCCESSFUL : SOMETHING_WRONG;
-	}
-
-	@PostMapping("/PokemonkUpdate")
-	public void updatePokemon(@RequestBody Pokemon pokemon) {
-		pokemonService.updatePokemon(pokemon);
 	}
 
 	@GetMapping("/PokemonGetAll")
 	public @ResponseBody List<Pokemon> selectAllPokemon() {
+		System.out.println("getting all the pokemon (control)");
+		logger.debug("getting all the pokemon (control)");
 		return pokemonService.selectAllPokemon();
 	}
-
+	
 	@PostMapping("/PokemonGetById")
-	public @ResponseBody Pokemon FindPokemonById(@RequestBody int id) {
-		return pokemonService.FindPokemonById(id);
+	public @ResponseBody Pokemon FindPokemonById(@RequestBody Pokemon pokemon) {
+		System.out.println("finding the pokemon by id (control)");
+		logger.debug("finding the pokemon by id (control)");
+		return pokemonService.FindPokemonById(pokemon.getId());
+	}
+	
+	@PostMapping("/PokemonUpdate")
+	public @ResponseBody ClientMessage updatePokemon(@RequestBody Pokemon pokemon) {
+		System.out.println("updating the pokemon (control)");
+		logger.debug("updating the pokemon (control)");
+		return(pokemonService.updatePokemon(pokemon)) ? REGISTRATION_SUCCESSFUL : SOMETHING_WRONG;
 	}
 
-	@PostMapping("/PokemonUpdate")
-	public void deletePokemon(@RequestBody int id) {
-		pokemonService.deletePokemon(id);
+
+	@PostMapping("/PokemonDelete")
+	public @ResponseBody ClientMessage deletePokemon(@RequestBody Pokemon pokemon) {
+		System.out.println("deleting the pokemon (control)");
+		logger.debug("deleting the pokemon (control)");
+		return(pokemonService.deletePokemon(pokemon.getId())) ? REGISTRATION_SUCCESSFUL : SOMETHING_WRONG;
 		
 	}
 

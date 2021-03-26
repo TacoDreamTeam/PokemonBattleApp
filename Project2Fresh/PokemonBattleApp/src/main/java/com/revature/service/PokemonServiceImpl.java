@@ -25,28 +25,39 @@ public class PokemonServiceImpl implements PokemonService {
 	
 	@Override
 	public boolean insertPokemon(Pokemon pokemon) {
+		logger.debug("adding the pokemon (service)");
+		System.out.println("adding the pokemon (service)");
 		pokemonDao.insertPokemon(pokemon);
 		return pokemon.getId()!=0;
 	}
 
 	@Override
-	public void updatePokemon(Pokemon pokemon) {
-		pokemonDao.updatePokemon(pokemon);
-	}
-
-	@Override
 	public List<Pokemon> selectAllPokemon() {
+		logger.debug("getting all the pokemon (service)");
+		System.out.println("getting all the pokemon (service)");
 		return pokemonDao.selectAllPokemon();
 	}
 
 	@Override
 	public Pokemon FindPokemonById(int id) {
+		logger.debug("finding the pokemon by id (service)");
+		System.out.println("finding the pokemon by id (service)");
 		return pokemonDao.FindPokemonById(id);
+	}
+	
+	@Override
+	public boolean updatePokemon(Pokemon pokemon) {
+		logger.debug("updating the pokemon (service)");
+		System.out.println("updating the pokemon (service)");
+		pokemonDao.updatePokemon(pokemon);
+		return pokemon.equals(pokemonDao.FindPokemonById(pokemon.getId()));
 	}
 
 	@Override
-	public void deletePokemon(int id) {
+	public boolean deletePokemon(int id) {
+		logger.debug("deleting the pokemon (service)");
+		System.out.println("deleting the pokemon (service)");
 		pokemonDao.deletePokemon(id);
+		return pokemonDao.FindPokemonById(id)==null;
 	}
-
 }

@@ -11,15 +11,17 @@ public interface TrainerController {
 	
 	public List<Trainer> selectAllTrainers();
 	
-	public Trainer trainerFindById(int id);
+	public Trainer trainerFindById(Trainer trainer);
 	
-	public Trainer selectTrainerByUsername(String username);
+	//public Trainer selectTrainerByUsername(String username);
+	
+	public Trainer selectTrainerByUsername(Trainer trainer);
 
-	public void deleteTrainer(int id);
+	public ClientMessage deleteTrainer(Trainer trainer);
 	
-	public void updateTrainer(Trainer trainer);
+	public ClientMessage updateTrainer(Trainer trainer);
 	
-	public Trainer login(String trainerUsername, String password);
+	public Trainer login(Trainer trainer);
 
 	
 }
