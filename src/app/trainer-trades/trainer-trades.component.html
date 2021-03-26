@@ -13,18 +13,26 @@
             <strong>UserName: </strong>: {{ t.username }}
             <strong>Password: </strong>: {{ t.password }}
         </div>
+
+        <div *ngFor="let p of tempPokeDeck" class="list-group-item">
+            <strong>ID: </strong>: {{ p.id }}
+            <strong>Trainer Id: </strong>: {{ p.trainerId }}
+            <strong>Pokemon Id: </strong>: {{ p.pokemonId }}
+        </div>
+
     </form>
 
 </mat-card>
 
-<select class="form-control" id="OtherTrainer">
-    <option *ngFor="let t2 of trainer">{{t2.username}} </option>
+<select class="form-control" id="OtherTrainer" (change)="searchPokeDeck($event)">
+    <option *ngFor="let t2 of trainer" [value]="t2.trainerId">{{t2.username}} </option>
 </select>
 
 <br>
 
+<!--This will not believe until able to getPokeDeck by trainer id (not PokeDeck id)-->
 <select class="form-control" id="OtherTrainer">
-    <option *ngFor="let t2 of trainer">{{t2.username}} </option>
+    <option *ngFor="let p2 of pokeDeck">{{p2.pokemonId}} </option>
 </select>
 
 </div>
