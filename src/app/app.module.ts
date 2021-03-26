@@ -25,6 +25,7 @@ import { RegisterComponent } from './register/register.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
+import { TrainerTradesComponent } from './trainer-trades/trainer-trades.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { LoginComponent } from './login/login.component';
     RegisterComponent,
     NotFoundComponent,
     LoginComponent,
+    TrainerTradesComponent,
   ],
   imports: [
     BrowserModule,
