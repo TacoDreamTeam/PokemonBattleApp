@@ -75,13 +75,15 @@ public class Pokemon {
 		this.typeId = typeId;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Pokemon [id=" + id + ", pokeApi=" + pokeApi + ", pokeName=" + pokeName + ", typeId=" + typeId + "]";
+	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((PokeType == null) ? 0 : PokeType.hashCode());
 		result = prime * result + id;
 		result = prime * result + pokeApi;
 		result = prime * result + ((pokeName == null) ? 0 : pokeName.hashCode());
@@ -98,11 +100,6 @@ public class Pokemon {
 		if (getClass() != obj.getClass())
 			return false;
 		Pokemon other = (Pokemon) obj;
-		if (PokeType == null) {
-			if (other.PokeType != null)
-				return false;
-		} else if (!PokeType.equals(other.PokeType))
-			return false;
 		if (id != other.id)
 			return false;
 		if (pokeApi != other.pokeApi)
@@ -119,11 +116,8 @@ public class Pokemon {
 			return false;
 		return true;
 	}
-
-	@Override
-	public String toString() {
-		return "Pokemon [id=" + id + ", pokeApi=" + pokeApi + ", pokeName=" + pokeName + ", typeId=" + typeId + "]";
-	}
+	
+	
 	
 	
 }

@@ -107,6 +107,12 @@ public class Trades {
 	}
 
 	@Override
+	public String toString() {
+		return "Trades [id=" + id + ", wantsPokeId=" + wantsPokeId + ", hasPokeId=" + hasPokeId + ", pokemonWanted="
+				+ pokemonWanted + ", pokemonHas=" + pokemonHas + ", status=" + status + "]";
+	}
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -145,11 +151,7 @@ public class Trades {
 			return false;
 		return true;
 	}
-
-	@Override
-	public String toString() {
-		return "Trades [id=" + id + ", wantsPokeId=" + wantsPokeId + ", hasPokeId=" + hasPokeId + ", pokemonWanted="
-				+ pokemonWanted + ", pokemonHas=" + pokemonHas + ", status=" + status + "]";
-	}
+	
+	
 	
 }

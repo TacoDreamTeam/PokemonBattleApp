@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.revature.models.EffectiveTemplate;
 import com.revature.service.PokemonTypeService;
 
 @Controller("pokemonTypeController")
@@ -29,8 +30,8 @@ public class PokemonTypeControllerImpl implements PokemonTypeController {
 	}
 
 	@PostMapping("/PokemonTypeEffectivness")
-	public @ResponseBody double effectivness(@RequestBody String type1, String type2) {
-		return pokemonTypeService.effectivness(type1, type2);
+	public @ResponseBody double effectivness(@RequestBody EffectiveTemplate effectiveTemplate) {
+		return pokemonTypeService.effectivness(effectiveTemplate.getType1(), effectiveTemplate.getType2());
 	}
 
 }

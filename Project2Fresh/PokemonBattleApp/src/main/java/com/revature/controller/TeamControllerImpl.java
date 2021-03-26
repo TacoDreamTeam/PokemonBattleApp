@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.revature.ajax.ClientMessage;
+import com.revature.models.Pokemon;
 import com.revature.models.Team;
 import com.revature.service.PokeDeckService;
 import com.revature.service.TeamService;
@@ -36,24 +37,41 @@ public class TeamControllerImpl implements TeamController {
 	
 	@PostMapping("/TeamInsert")
 	public  @ResponseBody ClientMessage insertTeam(@RequestBody Team team) {
+		System.out.println("adding the Team (control)");
+		logger.debug("adding the Team (control)");
 		return(teamService.insertTeam(team)) ? REGISTRATION_SUCCESSFUL : SOMETHING_WRONG;
 	}
 
 	@GetMapping("/TeamGetAll")
-	public List<Team> selectAllTeams() {
-		// TODO Auto-generated method stub
+	public @ResponseBody List<Team> selectAllTeams() {
+		System.out.println("getting all the Team (control)");
+		logger.debug("getting all the Team (control)");
+		List<Team> teams=teamService.selectAllTeams();
+		System.out.println("teams:");
+		System.out.println(teams);
 		return teamService.selectAllTeams();
+	}
+	
+	@PostMapping("/TeamGetById")
+	public @ResponseBody Team FindTeamById(@RequestBody Team team) {
+		System.out.println("finding the Team by id (control)");
+		logger.debug("finding the Team by id (control)");
+		return teamService.FindTeamById(team.getId());
 	}
 
 	@PostMapping("/TeamUpdate")
-	public void updateTeam(@RequestBody Team team) {
-		teamService.updateTeam(team);
+	public @ResponseBody ClientMessage updateTeam(@RequestBody Team team) {
+		System.out.println("updating the Team (control)");
+		logger.debug("updating the Team (control)");
+		return teamService.updateTeam(team) ? REGISTRATION_SUCCESSFUL : SOMETHING_WRONG;
 
 	}
 
 	@PostMapping("/TeamDelete")
-	public void deleteTeam(@RequestBody int id) {
-		teamService.deleteTeam(id);
+	public @ResponseBody ClientMessage deleteTeam(@RequestBody Team team) {
+		System.out.println("deleting the Team (control)");
+		logger.debug("deleting the Team (control)");
+		return teamService.deleteTeam(team.getId()) ? REGISTRATION_SUCCESSFUL : SOMETHING_WRONG;
 
 	}
 

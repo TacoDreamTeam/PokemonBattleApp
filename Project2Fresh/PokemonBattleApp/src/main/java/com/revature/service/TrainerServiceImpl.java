@@ -45,13 +45,15 @@ public class TrainerServiceImpl implements TrainerService {
 	}
 
 	@Override
-	public void deleteTrainer(int id) {
+	public boolean deleteTrainer(int id) {
 		trainerDao.deleteTrainer(id);
+		return trainerDao.trainerFindById(id)==null;
 	}
 
 	@Override
-	public void updateTrainer(Trainer trainer) {
+	public boolean updateTrainer(Trainer trainer) {
 		trainerDao.updateTrainer(trainer);
+		return trainer.equals(trainerDao.trainerFindById(trainer.getTrainerId()));
 	}
 
 	@Override

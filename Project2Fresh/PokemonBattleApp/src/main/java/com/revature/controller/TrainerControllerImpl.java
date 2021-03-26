@@ -43,28 +43,29 @@ public class TrainerControllerImpl implements TrainerController{
 	}
 
 	@PostMapping("/TrainerGetById")
-	public @ResponseBody Trainer trainerFindById(@RequestBody int id) {
-		return trainerService.trainerFindById(id);
+	public @ResponseBody Trainer trainerFindById(@RequestBody Trainer trainer) {
+		return trainerService.trainerFindById(trainer.getTrainerId());
 	}
 
 	@PostMapping("/TrainerGetByUsername")
-	public @ResponseBody Trainer selectTrainerByUsername(@RequestBody String username) {
-		return trainerService.selectTrainerByUsername(username);
+	//public @ResponseBody Trainer selectTrainerByUsername(@RequestBody String username) {
+	public @ResponseBody Trainer selectTrainerByUsername(@RequestBody Trainer trainer) {
+		return trainerService.selectTrainerByUsername(trainer.getUsername());
 	}
 
 	@PostMapping("/TrainerDelete")
-	public void deleteTrainer(@RequestBody int id) {
-		trainerService.deleteTrainer(id);
+	public @ResponseBody ClientMessage deleteTrainer(@RequestBody Trainer trainer) {
+		return trainerService.deleteTrainer(trainer.getTrainerId())? REGISTRATION_SUCCESSFUL : SOMETHING_WRONG;
 	}
 
 	@PostMapping("/TrainerUpdate")
-	public void updateTrainer(@RequestBody Trainer trainer) {
-		trainerService.updateTrainer(trainer);
+	public @ResponseBody ClientMessage updateTrainer(@RequestBody Trainer trainer) {
+		return trainerService.updateTrainer(trainer)? REGISTRATION_SUCCESSFUL : SOMETHING_WRONG;
 	}
 
 	@PostMapping("/Login")
-	public @ResponseBody Trainer login(@RequestBody String trainerUsername, String password) {
-		return trainerService.login(trainerUsername, password);
+	public @ResponseBody Trainer login(@RequestBody Trainer trainer) {
+		return trainerService.login(trainer.getUsername(), trainer.getPassword());
 	}
 
 }

@@ -8,11 +8,11 @@ public interface TradesService {
 
 	public boolean insertTrades(Trades trade);
 	
-	public void updateTrades(Trades trade);
+	public boolean updateTrades(Trades trade);
 	
 	public List<Trades> selectAllTrades();
 	
 	public Trades FindTradesById(int id);
 	
-	public void deleteTrades(int id);
+	public boolean deleteTrades(int id);
 }

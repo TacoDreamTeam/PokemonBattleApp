@@ -12,7 +12,7 @@ public interface PokeDeckService {
 	
 	public PokeDeck FindDeckById(int id);
 	
-	public void deleteDeck(int id);
+	public boolean deleteDeck(int id);
 
-	public void updateDeck(PokeDeck pokedeck);
+	public boolean updateDeck(PokeDeck pokedeck);
 }

@@ -25,23 +25,40 @@ public class TeamServiceImpl implements TeamService {
 	
 	@Override
 	public boolean insertTeam(Team team) {
+		logger.debug("adding the team (service)");
+		System.out.println("adding the team (service)");
 		teamDao.insertTeam(team);
 		return team.getId()!=0;
 	}
 
 	@Override
 	public List<Team> selectAllTeams() {
+		logger.debug("getting all the team (service)");
+		System.out.println("getting all the team (service)");
 		return teamDao.selectAllTeams();
 	}
 
 	@Override
-	public void updateTeam(Team team) {
+	public Team FindTeamById(int id) {
+		logger.debug("finding the team by id (service)");
+		System.out.println("finding the team by id (service)");
+		return teamDao.teamFindById(id);
+	}
+	
+	@Override
+	public boolean updateTeam(Team team) {
+		logger.debug("updating the team (service)");
+		System.out.println("updating the team (service)");
 		teamDao.updateTeam(team);
+		return team.equals(teamDao.teamFindById(team.getId()));
 	}
 
 	@Override
-	public void deleteTeam(int id) {
+	public boolean deleteTeam(int id) {
+		logger.debug("deleting the team (service)");
+		System.out.println("deleting the team (service)");
 		teamDao.deleteTeam(id);
+		return teamDao.teamFindById(id)==null;
 	}
 
 }

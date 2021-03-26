@@ -39,15 +39,14 @@ public class PokeDeckServiceImpl implements PokeDeckService {
 	}
 
 	@Override
-	public void deleteDeck(int id) {
-		pokeDeckDao.deleteDeck(id);
-	}
-
-	@Override
-	public void updateDeck(PokeDeck pokedeck) {
+	public boolean updateDeck(PokeDeck pokedeck) {
 		pokeDeckDao.updateDeck(pokedeck);
-		
+		return pokedeck.equals(pokeDeckDao.FindDeckById(pokedeck.getId()));
 	}
-
-
+	
+	@Override
+	public boolean deleteDeck(int id) {
+		pokeDeckDao.deleteDeck(id);
+		return pokeDeckDao.FindDeckById(id)==null;
+	}
 }

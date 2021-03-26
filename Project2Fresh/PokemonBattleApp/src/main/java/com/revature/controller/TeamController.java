@@ -11,8 +11,10 @@ public interface TeamController {
 
 	public List<Team> selectAllTeams();
 	
-	public void updateTeam(Team team);
+	public Team FindTeamById(Team team);
 	
-	public void deleteTeam(int id); 
+	public ClientMessage updateTeam(Team team);
+	
+	public ClientMessage deleteTeam(Team team); 
 
 }

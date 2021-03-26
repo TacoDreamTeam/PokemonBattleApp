@@ -9,12 +9,12 @@ public interface PokemonController {
 
 	public ClientMessage insertPokemon(Pokemon pokemon);
 	
-	public void updatePokemon(Pokemon pokemon);
+	public ClientMessage updatePokemon(Pokemon pokemon);
 	
 	public List<Pokemon> selectAllPokemon();
 	
-	public Pokemon FindPokemonById(int id);
+	public Pokemon FindPokemonById(Pokemon pokemon);
 	
-	public void deletePokemon(int id);
+	public ClientMessage deletePokemon(Pokemon pokemon);
 	
 }
