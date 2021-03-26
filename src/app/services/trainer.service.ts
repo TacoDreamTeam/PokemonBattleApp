@@ -29,7 +29,7 @@ export class TrainerService {
   public findTrainer(trainer: Trainer): Observable<Trainer>{
     return this.http.post<Trainer>(`${POKEMON_URL}findTrainer`, trainer)
     .pipe(
-      catchError(this.handleError<Trainer>('getHero', undefined))
+      catchError(this.handleError<Trainer>('getTrainer', undefined))
     )
   }
 
