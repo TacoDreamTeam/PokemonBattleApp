@@ -1,12 +1,12 @@
 export class Trainer {
-  id: number;
+  trainerId: number;
   username:string;
   password:string
   firstName:string;
   lastName:string;
 
-  constructor(id:number, username:string, password:string, firstName:string, lastName:string) {
-    this.id = id;
+  constructor(trainerId:number, username:string, password:string, firstName:string, lastName:string) {
+    this.trainerId = trainerId;
     this.username = username;
     this.password = password;
     this.firstName = firstName;

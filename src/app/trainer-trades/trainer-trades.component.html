@@ -1,0 +1,30 @@
+<div class="container">
+<mat-card>
+
+    <form [formGroup]="tradeForm" (ngSubmit)="onSubmit()">
+        <div>
+            <h1>Trainer Information</h1>
+        </div>
+
+        <div *ngFor="let t of trainer" class="list-group-item">
+            <strong>ID: </strong>: {{ t.trainerId }}
+            <strong>Name: </strong>: {{ t.firstName }}
+            <strong>Last Name: </strong>: {{ t.lastName }}
+            <strong>UserName: </strong>: {{ t.username }}
+            <strong>Password: </strong>: {{ t.password }}
+        </div>
+    </form>
+
+</mat-card>
+
+<select class="form-control" id="OtherTrainer">
+    <option *ngFor="let t2 of trainer">{{t2.username}} </option>
+</select>
+
+<br>
+
+<select class="form-control" id="OtherTrainer">
+    <option *ngFor="let t2 of trainer">{{t2.username}} </option>
+</select>
+
+</div>

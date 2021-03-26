@@ -17,7 +17,7 @@ export class TradesService {
   * POST
   */
     public registerTrade(trades: Trades): Observable<ClientMessage> {
-      return this.http.post<ClientMessage>(`${POKEMON_URL}registerTrade`, trades) //Please do changes on either code for name consistent
+      return this.http.post<ClientMessage>(`${POKEMON_URL}TradesInsert`, trades) //Please do changes on either code for name consistent
       .pipe(
         catchError(this.handleError<any>('cannot register trade!'))
       ); 
@@ -26,13 +26,23 @@ export class TradesService {
     /*
     * POST
     */
-    public findTrade(trades: Trades): Observable<Trades>{
-      return this.http.post<Trades>(`${POKEMON_URL}findTrade`, trades)
+    public updateTrade(trades: Trades): Observable<Trades>{
+      return this.http.post<Trades>(`${POKEMON_URL}TradesUpdate`, trades)
       .pipe(
-        catchError(this.handleError<Trades>('getTrade', undefined))
+        catchError(this.handleError<Trades>('updateTrade', undefined))
       )
     }
-  
+
+    /*
+    * HTTP POST
+    */
+    public findAllTradesById(trades: Trades): Observable<Trades[]> {
+      return this.http.post<Trades[]>(`${POKEMON_URL}TradesGetAll`, trades)
+      .pipe(
+        catchError(this.handleError<Trades[]>('getTradesById', []))
+      ); 
+    } 
+
     /*
     * HTTP GET
     */
@@ -41,7 +51,7 @@ export class TradesService {
       .pipe(
         catchError(this.handleError<Trades[]>('getTrades', []))
       ); 
-    } // This needs to be tied with the TrainerControllerImpl based on the logic established with the instructor example & approach
+    } 
   
     private handleError<T>(operation = 'operation', result?:T) {
       return (error: any):Observable<T> => {

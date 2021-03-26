@@ -13,11 +13,11 @@ export class TeamService {
 
   constructor(private http: HttpClient) { }
 
-    /*
+  /*
   * POST
   */
     public registerTeam(team: Team): Observable<ClientMessage> {
-      return this.http.post<ClientMessage>(`${POKEMON_URL}registerTeam`, team) //Please do changes on either code for name consistent
+      return this.http.post<ClientMessage>(`${POKEMON_URL}TeamInsert`, team) //Please do changes on either code for name consistent
       .pipe(
         catchError(this.handleError<any>('cannot register team!'))
       ); 
@@ -26,22 +26,32 @@ export class TeamService {
     /*
     * POST
     */
-    public findTeam(team: Team): Observable<Team>{
-      return this.http.post<Team>(`${POKEMON_URL}findTeam`, team)
+    public updateTeam(team: Team): Observable<Team>{
+      return this.http.post<Team>(`${POKEMON_URL}TeamUpdate`, team)
       .pipe(
-        catchError(this.handleError<Team>('getTeam', undefined))
+        catchError(this.handleError<Team>('updateTeam', undefined))
       )
     }
-  
+
+    /*
+    * HTTP POST
+    */
+    public findAllTeamsById(team: Team): Observable<Team[]> {
+      return this.http.post<Team[]>(`${POKEMON_URL}TeamGetById`, team)
+      .pipe(
+        catchError(this.handleError<Team[]>('getTeamsById', []))
+      ); 
+    } 
+
     /*
     * HTTP GET
     */
     public findAllTeams(): Observable<Team[]> {
-      return this.http.get<Team[]>(`${POKEMON_URL}findAllTeams`)
+      return this.http.get<Team[]>(`${POKEMON_URL}TeamGetAll`)
       .pipe(
         catchError(this.handleError<Team[]>('getTeams', []))
       ); 
-    } // This needs to be tied with the TrainerControllerImpl based on the logic established with the instructor example & approach
+    } 
   
     private handleError<T>(operation = 'operation', result?:T) {
       return (error: any):Observable<T> => {
