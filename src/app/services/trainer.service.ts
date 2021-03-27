@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+import { POKEMON_URL } from './../../environments/environment';
+import { catchError } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { Trainer } from './../models/trainer';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+=======
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Trainer } from './../models/trainer';
@@ -5,6 +13,7 @@ import { Observable, of } from 'rxjs';
 import { POKEMON_URL } from './../../environments/environment'
 import { ClientMessage } from './../models/client-message.model';
 import { catchError } from 'rxjs/operators';
+>>>>>>> f97b770c0244b0f4da55f31af969a35417a3b9ad
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +21,32 @@ import { catchError } from 'rxjs/operators';
 export class TrainerService {
 
   httpOptions = {
+<<<<<<< HEAD
+    headers: new HttpHeaders({'Content-type' : 'application/json'})
+=======
     // Shout out to Farid for figuring out that Content-Type must have a "-" if used
     headers: new HttpHeaders({'Content-Type' : 'application/json'})
+>>>>>>> f97b770c0244b0f4da55f31af969a35417a3b9ad
   }
 
   constructor(private http: HttpClient) { }
 
+<<<<<<< HEAD
+  public registerTrainer(trainer: Trainer, pokemonId: number): Observable<any>{
+    return this.http.post<any>(`${POKEMON_URL}`, trainer).pipe(
+      catchError(this.handleError<any>('registerTrainer'))
+    )
+  }
+
+  private handleError<T>(operation = 'operation', result?: T){
+    return (error:any): Observable<T> => {
+      console.error(error);
+
+      return of(result as T)
+    }
+  }
+}
+=======
   /*
   * POST
   */
@@ -75,3 +104,4 @@ export class TrainerService {
     }
   }
 }
+>>>>>>> f97b770c0244b0f4da55f31af969a35417a3b9ad
