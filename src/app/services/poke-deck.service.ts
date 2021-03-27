@@ -43,6 +43,12 @@ export class PokeDeckService {
       ); 
     }
 
+    public findPokeDeckByTrainerId(pokeDeck: PokeDeck): Observable<PokeDeck[]> {
+      return this.http.post<PokeDeck[]>(`${POKEMON_URL}PokeDeckGetByTrainerId`, pokeDeck)
+      .pipe(
+        catchError(this.handleError<PokeDeck[]>('getPokeDeckByTrainerId', []))
+      ); 
+    }
 
     /*
     * HTTP GET

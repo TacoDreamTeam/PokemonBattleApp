@@ -17,7 +17,7 @@ export class TrainerTradesComponent implements OnInit {
   ngOnInit(): void {
     this.findAllTrainersFromService();
     this.findAllPokeDeckFromService();
-    this.tempPokeDeck = this.pokeDeck;
+   // this.tempPokeDeck = this.pokeDeck;
   }
   
   tradeForm = this.fb.group({
@@ -26,17 +26,18 @@ export class TrainerTradesComponent implements OnInit {
     OwnPokemon:['']
   });
 
-  trainer:Trainer[] = []
-  tempPokeDeck:PokeDeck[] = []
-  pokeDeck:PokeDeck[] = []
-  otherTrainerId: number = 0;
+  trainer:Trainer[] = [];
+  pokeDeck:PokeDeck []= [];
+
+  public user: Trainer = new Trainer(0,"","","","");
+  public dex: PokeDeck = new PokeDeck(0,0,0);
 
   onSubmit() {
     // TODO: Use EventEmitter with form value
     console.warn(this.tradeForm.value);
   }
 
-  public findAllTrainersFromService(): void {
+  public findAllTrainersFromService(): void | undefined {
     // in this method we call on our service to fetch the heroes array and set it equal to 
     // our heroes property
     this.trainerService.findAllTrainer().subscribe(data => this.trainer = data);
@@ -46,14 +47,13 @@ export class TrainerTradesComponent implements OnInit {
     this.pokeDeckService.findAllPokeDeck().subscribe(data => this.pokeDeck = data);
   }
 
-  public findAllPokeDeckByIdFromService(): void {
-    let temp = new PokeDeck(0,this.otherTrainerId,0);
-    console.log("SELECTED VALUE: " + temp);
-    this.pokeDeckService.findPokeDeckById(temp).subscribe(data => this.pokeDeck = data);
+  public findAllPokeDeckByTrainerIdFromService(): void {
+    console.log("SELECTED VALUE: " + this.dex.trainerId);
+    this.pokeDeckService.findPokeDeckByTrainerId(this.dex).subscribe(data => this.pokeDeck = data);
   }
 
   searchPokeDeck(event: any) {
-    this.otherTrainerId = event.target.value;
-    this.findAllPokeDeckByIdFromService();
+    this.dex = new PokeDeck(0,event.target.value,0);
+    this.findAllPokeDeckByTrainerIdFromService();
   }
 }
