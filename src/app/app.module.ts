@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -22,10 +22,10 @@ import { MessageComponent } from './message/message.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { RegisterComponent } from './register/register.component';
-import { AuthInterceptor } from './auth/auth.interceptor';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 import { TrainerTradesComponent } from './trainer-trades/trainer-trades.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -56,14 +56,9 @@ import { TrainerTradesComponent } from './trainer-trades/trainer-trades.componen
     ReactiveFormsModule,
     NgxPaginationModule,
     MatPaginatorModule,
+    MatProgressSpinnerModule
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi:true
-    },
-  ],
+  providers: [  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

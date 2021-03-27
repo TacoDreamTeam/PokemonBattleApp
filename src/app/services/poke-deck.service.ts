@@ -20,9 +20,9 @@ export class PokeDeckService {
       return this.http.post<ClientMessage>(`${POKEMON_URL}PokeDeckInsert`, pokeDeck) //Please do changes on either code for name consistent
       .pipe(
         catchError(this.handleError<any>('cannot register PokeDeck!'))
-      ); 
+      );
     }
-  
+
     /*
     * POST
     */
@@ -32,7 +32,7 @@ export class PokeDeckService {
         catchError(this.handleError<PokeDeck>('updatePokeDeck', undefined))
       )
     }
-  
+
     /*
     * HTTP POST
     */
@@ -57,9 +57,9 @@ export class PokeDeckService {
       return this.http.get<PokeDeck[]>(`${POKEMON_URL}PokeDeckGetAll`)
       .pipe(
         catchError(this.handleError<PokeDeck[]>('getPokeDeck', []))
-      ); 
-    }
-  
+      );
+    } // This needs to be tied with the TrainerControllerImpl based on the logic established with the instructor example & approach
+
     private handleError<T>(operation = 'operation', result?:T) {
       return (error: any):Observable<T> => {
         console.error(error);

@@ -17,11 +17,15 @@ export class PokemonService {
   constructor(private http:HttpClient,private messageService: MessageService) { }
 
  getPokemon(){
-   return this.http.get(`https://pokeapi.co/api/v2/pokemon?limit=30`)
+   return this.http.get(`https://pokeapi.co/api/v2/pokemon?limit=100`)
  }
 
 getMoreData(name:string){
   return this.http.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
+}
+
+getStartThree(){
+  return this.http.get(`https://pokeapi.co/api/v2/pokemon?limit=3&offset=4.`)
 }
 
   private handleError<T>(operation = 'operation', result?: T) {

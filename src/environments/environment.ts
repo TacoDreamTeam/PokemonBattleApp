@@ -6,8 +6,8 @@ export const environment = {
   production: false
 };
 
+// we're going to keep this as a template literal with backticks because we need to re
 export const POKEMON_URL = `http://localhost:8080/PokemonBattleApp/`
-
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
@@ -16,3 +16,5 @@ export const POKEMON_URL = `http://localhost:8080/PokemonBattleApp/`
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+
