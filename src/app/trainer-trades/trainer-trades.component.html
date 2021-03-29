@@ -16,17 +16,26 @@
     </form>
 
 </mat-card>
+
 <div>
-<select class="form-control" id="OtherTrainer" (change)="searchPokeDeck($event)">
+    <h3>Select trainer who you wishes to trade with</h3>
+    <select class="form-control" id="OtherTrainer" (change)="searchPokeDeck($event)">
     <option *ngFor="let t2 of trainer" [value]="t2.trainerId">{{t2.username}} </option>
-</select>
+    </select>
 </div>
 
 <br>
 
 <!--This will not believe until able to getPokeDeck by trainer id (not PokeDeck id)-->
+<h3>Select pokemon you want</h3>
 <select class="form-control" id="OtherPokeDecK">
     <option *ngFor="let p2 of pokeDeck">{{p2.trainerId}} </option>
+</select>
+
+<br>
+<h3>Select pokemon to offer</h3>
+<select class="form-control" id="MyPokeDecK">
+    <option *ngFor="let p2 of pokeDeck">{{p2.pokemonId}} </option>
 </select>
 
 </div>

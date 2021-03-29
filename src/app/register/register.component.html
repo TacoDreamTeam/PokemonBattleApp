@@ -9,7 +9,7 @@
 
               <!-- Here I want to take input from the user, and change the property of the hero object in my ts file -->
               <label for="">Trainer Id:</label>
-              <input  type="text"  [(ngModel)]="trainer.id" class="form-control" formControlName="trainerId" id="trainer_id" aria-describedby="trainer_id">
+              <input  type="text"  [(ngModel)]="trainer.trainerId" class="form-control" formControlName="trainerId" id="trainer_id" aria-describedby="trainer_id">
 
               <label>Username:</label>
               <input [(ngModel)]="trainer.username" placeholder="Enter Username" class="form-control " required>
@@ -25,9 +25,9 @@
 
              <form [formGroup]="profileForm">
                <label>PokeApi#</label>
-              <span ><input type="text" [(ngModel)]="pokeDeck.pokemon_id" class="form-control" formControlName="pokeApi" id="pokeApi" aria-describedby="pokeApi"></span>
+              <span ><input type="text" [(ngModel)]="pokeDeck.pokemonId" class="form-control" formControlName="pokeApi" id="pokeApi" aria-describedby="pokeApi"></span>
               <label for="">Name</label>
-              <input  type="text" [(ngModel)]="pokeDeck.trainer_id" class="form-control" formControlName="name" id="name" aria-describedby="name">
+              <input  type="text" [(ngModel)]="pokeDeck.trainerId" class="form-control" formControlName="name" id="name" aria-describedby="name">
 
             </form>
               <button mat-raised-button color="primary" class="ml-2"(click)="selectedPokemon1()">Select CHARMELEON</button>
@@ -39,7 +39,7 @@
 
 
           <div>
-              <button mat-raised-button color="primary" (click)="registerHeroFromService()">Register Trainer!</button>
+              <button mat-raised-button color="primary" (click)="registerTrainerFromService()">Register Trainer!</button>
               <span><a mat-flat-button color="primary" [routerLink]="['/login']"><mat-icon>login</mat-icon>Login</a></span>
           </div>
 

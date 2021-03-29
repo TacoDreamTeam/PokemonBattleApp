@@ -9,7 +9,7 @@ import { TrainerService } from '../services/trainer.service';
 import { PokeDeckService } from '../services/poke-deck.service';
 import { PokemonService } from '../services/pokemon.service';
 import { Pokemon } from '../models/pokemon.model';
-import { PokeDeck } from '../models/PokeDeck.model';
+import { PokeDeck } from '../models/pokeDeck.model';
 
 
 @Component({
@@ -49,9 +49,9 @@ export class RegisterComponent implements OnInit {
   // Client message to the user
   public clientMessage: ClientMessage = new ClientMessage('');
 
-  public registerHeroFromService(): void {
+  public registerTrainerFromService(): void {
 
-    this.trainerService.registerHero(this.trainer).subscribe(data => this.clientMessage = data,
+    this.trainerService.registerTrainer(this.trainer).subscribe(data => this.clientMessage = data,
 
       error => this.clientMessage.message = 'SOMETHING WENT WRONG!');
 

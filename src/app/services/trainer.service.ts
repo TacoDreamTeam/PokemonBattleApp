@@ -6,7 +6,7 @@ import { POKEMON_URL } from './../../environments/environment'
 import { ClientMessage } from './../models/client-message.model';
 import { catchError } from 'rxjs/operators';
 import { Pokemon } from '../models/pokemon.model';
-import { PokeDeck } from '../models/PokeDeck.model';
+import { PokeDeck } from '../models/pokeDeck.model';
 
 @Injectable({
   providedIn: 'root'

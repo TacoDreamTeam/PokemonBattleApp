@@ -17,7 +17,6 @@ export class TrainerTradesComponent implements OnInit {
   ngOnInit(): void {
     this.findAllTrainersFromService();
     this.findAllPokeDeckFromService();
-   // this.tempPokeDeck = this.pokeDeck;
   }
   
   tradeForm = this.fb.group({
@@ -27,8 +26,9 @@ export class TrainerTradesComponent implements OnInit {
   });
 
   trainer:Trainer[] = [];
-  pokeDeck:PokeDeck []= [];
-
+  pokeDeck:PokeDeck [] = [];
+  myPokeDeck: PokeDeck [] = [];
+  
   public user: Trainer = new Trainer(0,"","","","");
   public dex: PokeDeck = new PokeDeck(0,0,0);
 
@@ -37,9 +37,9 @@ export class TrainerTradesComponent implements OnInit {
     console.warn(this.tradeForm.value);
   }
 
-  public findAllTrainersFromService(): void | undefined {
-    // in this method we call on our service to fetch the heroes array and set it equal to 
-    // our heroes property
+  public findAllTrainersFromService(): void {
+    // in this method we call on our service to fetch the trainer array and set it equal to 
+    // our trainer property
     this.trainerService.findAllTrainer().subscribe(data => this.trainer = data);
   }
 
