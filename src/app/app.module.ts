@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,7 +25,10 @@ import { RegisterComponent } from './register/register.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 import { TrainerTradesComponent } from './trainer-trades/trainer-trades.component';
+<<<<<<< HEAD
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+=======
+>>>>>>> e2f70ad6bb6b459183b9d461955888c935826acc
 
 @NgModule({
   declarations: [
@@ -56,9 +59,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ReactiveFormsModule,
     NgxPaginationModule,
     MatPaginatorModule,
-    MatProgressSpinnerModule
   ],
-  providers: [  ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

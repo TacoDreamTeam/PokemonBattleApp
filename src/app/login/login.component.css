@@ -3,3 +3,12 @@ img{
   padding: 0;
   margin: 0 auto;
 }
+
+
+.container{
+  margin-top: 3em;
+}
+
+button{
+margin: 5px;
+}

@@ -2,44 +2,34 @@
 
     <img src="https://www.characterworld.com/wp-content/uploads/2019/04/liv-Fuel.jpg" alt="">
 </div>
+<div class="container card px-4 py-4">
+
+<div class="panel-body">
+<div *ngIf="recievedTrainer.username">{{recievedTrainer.username}}</div>
+  <div class="list-group">
+      <div class="list-group-item">
+          <div class="form-group">
+              <!-- here we take in some usre input and bind it to our component.ts hero property
+              This repreents the hero object that we include in our post request to our server.  -->
+              <label>Username:</label>
+              <input [(ngModel)]="trainer.username" placeholder="Enter Username" class="form-control" />
+              <label>Password:</label>
+              <input [(ngModel)]="trainer.password" placeholder="Enter Password" class="form-control" />
+          </div>
+          <div>
+              <button mat-flat-button  color="primary" (click)="findHeroFromService()">Login In!</button>
+
+               <span style="flex:1 1 auto"><a mat-flat-button color="primary" [routerLink]="['/register']"><mat-icon>how_to_reg</mat-icon>Register</a></span>
 
 
-<div>
+            </div>
 
-
-  <div class="panel-body">
-
-      <div class="list-group">
-
-          <div class="list-group-item">
-
-              <div class="form-group">
-
-                  <!-- here we take in some usre input and bind it to our component.ts hero property
-                  This repreents the hero object that we include in our post request to our server.  -->
-                  <input [(ngModel)]="trainer.username" placeholder="Hero's name" class="form-control" />
-
-              </div>
-
-              <div>
-                  <button class="btn btn-primary btn-center" (click)="findHeroFromService()">FIND HERO!</button>
-              </div>
-
-              <div *ngIf="recievedTrainer.username">
-                  {{ recievedTrainer.password }}
-              </div>
-              <div>
-                  {{ clientMessage.message }}
-              </div>
-
+          <div>
+              {{ clientMessage.message }}
           </div>
 
       </div>
 
-
   </div>
 
 </div>
-      <div class="button-row">
-        <a mat-flat-button color="primary" [routerLink]="['/register']"><mat-icon>how_to_reg</mat-icon>Register</a>
-      </div>

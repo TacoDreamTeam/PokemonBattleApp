@@ -1,0 +1,31 @@
+<div class="panel-body">
+
+    <div class="list-group">
+
+        <div class="list-group-item">
+
+            <div class="form-group">
+
+                <!-- here we take in some usre input and bind it to our component.ts hero property
+                This repreents the hero object that we include in our post request to our server.  -->
+                <input [(ngModel)]="deck.id" placeholder="Trainer's Deck Id" class="form-control" />
+
+            </div>
+
+            <div>
+                <button class="btn btn-primary btn-center" (click)="findTrainerDeck()">Find Trainer's Deck!</button>
+            </div>
+
+            <div *ngIf="deck.id">
+                {{ deck.id }} 
+            </div>
+            <div>
+                {{ clientMessage.message }}
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>

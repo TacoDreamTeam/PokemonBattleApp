@@ -40,14 +40,14 @@ export class PokeDeckService {
       return this.http.post<PokeDeck[]>(`${POKEMON_URL}PokeDeckGetById`, pokeDeck)
       .pipe(
         catchError(this.handleError<PokeDeck[]>('getPokeDeckById', []))
-      ); 
+      );
     }
 
     public findPokeDeckByTrainerId(pokeDeck: PokeDeck): Observable<PokeDeck[]> {
       return this.http.post<PokeDeck[]>(`${POKEMON_URL}PokeDeckGetByTrainerId`, pokeDeck)
       .pipe(
         catchError(this.handleError<PokeDeck[]>('getPokeDeckByTrainerId', []))
-      ); 
+      );
     }
 
     /*
@@ -58,7 +58,7 @@ export class PokeDeckService {
       .pipe(
         catchError(this.handleError<PokeDeck[]>('getPokeDeck', []))
       );
-    } // This needs to be tied with the TrainerControllerImpl based on the logic established with the instructor example & approach
+    }
 
     private handleError<T>(operation = 'operation', result?:T) {
       return (error: any):Observable<T> => {
