@@ -1,0 +1,32 @@
+<div class="container">
+<mat-card>
+
+    <form [formGroup]="tradeForm" (ngSubmit)="onSubmit()">
+        <div>
+            <h1>Trainer Information</h1>
+        </div>
+
+        <div *ngFor="let t of trainer" class="list-group-item">
+            <strong>ID: </strong>: {{ t.trainerId }}
+            <strong>Name: </strong>: {{ t.firstName }}
+            <strong>Last Name: </strong>: {{ t.lastName }}
+            <strong>UserName: </strong>: {{ t.username }}
+            <strong>Password: </strong>: {{ t.password }}
+        </div>
+    </form>
+
+</mat-card>
+<div>
+<select class="form-control" id="OtherTrainer" (change)="searchPokeDeck($event)">
+    <option *ngFor="let t2 of trainer" [value]="t2.trainerId">{{t2.username}} </option>
+</select>
+</div>
+
+<br>
+
+<!--This will not believe until able to getPokeDeck by trainer id (not PokeDeck id)-->
+<select class="form-control" id="OtherPokeDecK">
+    <option *ngFor="let p2 of pokeDeck">{{p2.trainerId}} </option>
+</select>
+
+</div>

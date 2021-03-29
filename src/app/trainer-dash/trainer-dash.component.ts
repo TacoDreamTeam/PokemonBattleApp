@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Trainer } from '../models/trainer';
 
 @Component({
   selector: 'app-trainer-dash',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrainerDashComponent implements OnInit {
 
-  constructor() { }
+    sessionValue:any='';
+    currentUser:any
+  router: any;
+  constructor(router:Router) { }
 
   ngOnInit(): void {
+   this.sessionValue=sessionStorage.getItem("currentTrainer");
+    this.currentUser=JSON.parse(this.sessionValue)
+   console.log(this.currentUser);
+
+   this.goToPage();
+
+
   }
+
+
+
+
+
+
+goToPage(){
+  if(this.currentUser===null){
+    this.router.navigate(['/login'])
+  }
+}
 
 }

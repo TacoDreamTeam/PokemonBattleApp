@@ -8,8 +8,6 @@ import { MessageService } from '../services/message.service';
 })
 export class PokemonService {
 
-  private baseUrl: string = 'https://pokeapi.co/api/v2/pokemon?limit=10';
-
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -17,7 +15,7 @@ export class PokemonService {
   constructor(private http:HttpClient,private messageService: MessageService) { }
 
  getPokemon(){
-   return this.http.get(`https://pokeapi.co/api/v2/pokemon?limit=100`)
+   return this.http.get(`https://pokeapi.co/api/v2/pokemon?limit=200`)
  }
 
 getMoreData(name:string){

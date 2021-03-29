@@ -1,12 +1,19 @@
 export class Trainer {
-  id: number;
-  username:string;
-  password:string
-  firstName:string;
-  lastName:string;
+  
+  trainerId: number  | null |any;
+  username:string  | null |any;
+  password:string  | null |any;
+  firstName:string   | null |any;
+  lastName:string   | null |any;
 
-  constructor(id:number, username:string, password:string, firstName:string, lastName:string) {
-    this.id = id;
+  constructor(trainerId:number   | null |any,
+     username:string   | null |any,
+     password:string  | null |any,
+     firstName:string  | null |any,
+     lastName:string  | null |any) {
+    this.trainerId = trainerId;
+
+
     this.username = username;
     this.password = password;
     this.firstName = firstName;
