@@ -10,9 +10,6 @@ public class Team {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
-	@Column(name="trainer_id", nullable = false)
-	private int trainerId;
-	
 	@Column(name="pokemon1_id", nullable = false)
 	private int pokemonId1;
 	
@@ -35,42 +32,37 @@ public class Team {
 		
 	}
 	
-	public Team(int trainerId, int pokemonId1) {
+	public Team(int pokemonId1) {
 		super();
-		this.trainerId = trainerId;
 		this.pokemonId1 = pokemonId1;
 	}
 	
 	
 
-	public Team(int trainerId, int pokemonId1, int pokemonId2) {
+	public Team(int pokemonId1, int pokemonId2) {
 		super();
-		this.trainerId = trainerId;
 		this.pokemonId1 = pokemonId1;
 		this.pokemonId2 = pokemonId2;
 	}
 	
 
-	public Team(int trainerId, int pokemonId1, int pokemonId2, int pokemonId3) {
+	public Team(int pokemonId1, int pokemonId2, int pokemonId3) {
 		super();
-		this.trainerId = trainerId;
 		this.pokemonId1 = pokemonId1;
 		this.pokemonId2 = pokemonId2;
 		this.pokemonId3 = pokemonId3;
 	}
 
-	public Team(int trainerId, int pokemonId1, int pokemonId2, int pokemonId3, int pokemonId4) {
+	public Team(int pokemonId1, int pokemonId2, int pokemonId3, int pokemonId4) {
 		super();
-		this.trainerId = trainerId;
 		this.pokemonId1 = pokemonId1;
 		this.pokemonId2 = pokemonId2;
 		this.pokemonId3 = pokemonId3;
 		this.pokemonId4 = pokemonId4;
 	}
 
-	public Team(int trainerId, int pokemonId1, int pokemonId2, int pokemonId3, int pokemonId4, int pokemonId5) {
+	public Team(int pokemonId1, int pokemonId2, int pokemonId3, int pokemonId4, int pokemonId5) {
 		super();
-		this.trainerId = trainerId;
 		this.pokemonId1 = pokemonId1;
 		this.pokemonId2 = pokemonId2;
 		this.pokemonId3 = pokemonId3;
@@ -78,9 +70,8 @@ public class Team {
 		this.pokemonId5 = pokemonId5;
 	}
 
-	public Team(int trainerId, int pokemonId1, int pokemonId2, int pokemonId3, int pokemonId4, int pokemonId5, int pokemonId6) {
+	public Team(int pokemonId1, int pokemonId2, int pokemonId3, int pokemonId4, int pokemonId5, int pokemonId6) {
 		super();
-		this.trainerId = trainerId;
 		this.pokemonId1 = pokemonId1;
 		this.pokemonId2 = pokemonId2;
 		this.pokemonId3 = pokemonId3;
@@ -94,7 +85,6 @@ public class Team {
 			int pokemonId6) {
 		super();
 		this.id = id;
-		this.trainerId = trainerId;
 		this.pokemonId1 = pokemonId1;
 		this.pokemonId2 = pokemonId2;
 		this.pokemonId3 = pokemonId3;
@@ -109,14 +99,6 @@ public class Team {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public int getTrainerId() {
-		return trainerId;
-	}
-
-	public void setTrainerId(int trainerId) {
-		this.trainerId = trainerId;
 	}
 
 	public int getPokemonId1() {
@@ -178,7 +160,6 @@ public class Team {
 		result = prime * result + pokemonId4;
 		result = prime * result + pokemonId5;
 		result = prime * result + pokemonId6;
-		result = prime * result + trainerId;
 		return result;
 	}
 
@@ -205,17 +186,13 @@ public class Team {
 			return false;
 		if (pokemonId6 != other.pokemonId6)
 			return false;
-		if (trainerId != other.trainerId)
-			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Team [id=" + id + ", trainerId=" + trainerId + ", pokemonId1=" + pokemonId1 + ", pokemonId2="
-				+ pokemonId2 + ", pokemonId3=" + pokemonId3 + ", pokemonId4=" + pokemonId4 + ", pokemonId5="
-				+ pokemonId5 + ", pokemonId6=" + pokemonId6 + "]";
+		return "Team [id=" + id + ", pokemonId1=" + pokemonId1 + ", pokemonId2=" + pokemonId2 + ", pokemonId3="
+				+ pokemonId3 + ", pokemonId4=" + pokemonId4 + ", pokemonId5=" + pokemonId5 + ", pokemonId6="
+				+ pokemonId6 + "]";
 	}
-	
-	
 }

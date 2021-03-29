@@ -24,6 +24,9 @@ public class Trainer {
 	@Column(name="last_name", nullable = false)
 	private String lastName;
 	
+	@Column(name="trainer_team_id")
+	private int teamId;
+	
 	// Many to Many relationship
 		@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 		private List<Trades> trades;
@@ -97,11 +100,12 @@ public class Trainer {
 		this.lastName = lastName;
 	}
 
+	public int getTeamId() {
+		return teamId;
+	}
 
-	@Override
-	public String toString() {
-		return "Trainer [trainerId=" + trainerId + ", username=" + username + ", password=" + password + ", firstName="
-				+ firstName + ", lastName=" + lastName + "]";
+	public void setTeamId(int teamId) {
+		this.teamId = teamId;
 	}
 
 	@Override
@@ -111,6 +115,7 @@ public class Trainer {
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + teamId;
 		result = prime * result + trainerId;
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
@@ -140,6 +145,8 @@ public class Trainer {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
+		if (teamId != other.teamId)
+			return false;
 		if (trainerId != other.trainerId)
 			return false;
 		if (username == null) {
@@ -150,7 +157,11 @@ public class Trainer {
 		return true;
 	}
 
-	
-	
+	@Override
+	public String toString() {
+		return "Trainer [trainerId=" + trainerId + ", username=" + username + ", password=" + password + ", firstName="
+				+ firstName + ", lastName=" + lastName + ", teamId=" + teamId + "]";
+	}
+
 	
 }
