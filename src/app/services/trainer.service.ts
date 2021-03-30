@@ -1,4 +1,3 @@
-import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Trainer } from './../models/trainer';
@@ -6,7 +5,6 @@ import { Observable, of } from 'rxjs';
 import { POKEMON_URL } from './../../environments/environment';
 import { ClientMessage } from './../models/client-message.model';
 import { catchError } from 'rxjs/operators';
-import { Pokemon } from '../models/pokemon.model';
 import { PokeDeck } from '../models/pokeDeck.model';
 import { Team } from '../models/team.model';
 

@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder} from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthorizeService } from '../services/authorize.service';
 import { Trainer } from '../models/trainer';
 import { ClientMessage } from '../models/client-message.model';
 import { TrainerService } from '../services/trainer.service';
@@ -40,8 +37,6 @@ export class RegisterComponent implements OnInit {
 
   // Client message to the user
   public clientMessage: ClientMessage = new ClientMessage('');
-
-
 
   getTrainerId(val){
     this.currentVal=0;

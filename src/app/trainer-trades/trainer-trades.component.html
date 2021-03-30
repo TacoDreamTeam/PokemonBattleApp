@@ -3,30 +3,54 @@
 
     <form [formGroup]="tradeForm" (ngSubmit)="onSubmit()">
         <div>
-            <h1>Trainer Information</h1>
+            <h1>Trades Status</h1>
         </div>
 
-        <div *ngFor="let t of trainer" class="list-group-item">
-            <strong>ID: </strong>: {{ t.trainerId }}
-            <strong>Name: </strong>: {{ t.firstName }}
-            <strong>Last Name: </strong>: {{ t.lastName }}
-            <strong>UserName: </strong>: {{ t.username }}
-            <strong>Password: </strong>: {{ t.password }}
+        <div *ngFor="let t of allTrades" class="list-group-item">
+            id: {{t.id}}
+            wants_trainer_id: {{t.wants_trainer_id}}
+            has_trainer_id: {{t.has_trainer_id}}
+            pokemon_wanted_id: {{t.pokemon_wanted_id}}
+            pokemon_had_id: {{t.pokemon_had_id}}
+            status: {{t.status}}
+        </div>
+        <div *ngIf="allTrades.length == 0">
+            <label>
+                There is no trades.
+            </label>
         </div>
     </form>
 
 </mat-card>
-<div>
-<select class="form-control" id="OtherTrainer" (change)="searchPokeDeck($event)">
-    <option *ngFor="let t2 of trainer" [value]="t2.trainerId">{{t2.username}} </option>
-</select>
-</div>
 
-<br>
+<form>
+    <div>
+        <h3>Select trainer who you wishes to trade with</h3>
+        <select class="form-control" id="OtherTrainer" (change)="searchPokeDeck($event)" required>
+            <option placeholder="0" selected disabled></option>            
+                <option *ngFor="let t2 of trainer" [value]="t2.trainerId">
+                    {{t2.username}}
+                </option>
+        </select>
+    </div>
+    
+    <br>
+    
+    <!--This will not believe until able to getPokeDeck by trainer id (not PokeDeck id)-->
+    <h3>Select pokemon you want</h3>
+    <select class="form-control" id="OtherPokeDecK" required>
+        <option placeholder="0" selected disabled></option>
+        <option *ngFor="let p2 of pokeDeck">{{p2.pokemonId}} </option>
+    </select>
+    
+    <br>
+    <h3>Select pokemon to offer</h3>
+    <select class="form-control" id="MyPokeDecK" required>
+        <option placeholder="0" selected disabled></option>
+        <option *ngFor="let p2 of myPokeDeck">{{p2.pokemonId}} </option>
+    </select>
 
-<!--This will not believe until able to getPokeDeck by trainer id (not PokeDeck id)-->
-<select class="form-control" id="OtherPokeDecK">
-    <option *ngFor="let p2 of pokeDeck">{{p2.trainerId}} </option>
-</select>
-
+    <button type="submit" (click)="registerTradeFromService()">Send offer</button>
+    
+</form>
 </div>
