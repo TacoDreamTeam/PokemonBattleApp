@@ -7,7 +7,7 @@
       class="example-icon"
       aria-label="Example icon-button with menu icon"
     >
-      <mat-icon>exit_to_app</mat-icon>
+    <a [routerLink]="['/login']" (click)="logOut();"><mat-icon>exit_to_app</mat-icon></a>
     </button>
   </mat-toolbar-row>
 

@@ -1,3 +1,4 @@
+import { TrainerDeckComponent } from './trainer-deck/trainer-deck.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'trainerDash', component: TrainerDashComponent},
   {path: 'trainerInfo', component: TrainerDetailComponent},
   {path: 'trainerTrades', component: TrainerTradesComponent},
+  {path: 'trainerDeck', component: TrainerDeckComponent},
   {path: 'pokemon', component: PokemonComponent},
   {path:'login',component:LoginComponent},
   {path:'register',component: RegisterComponent},

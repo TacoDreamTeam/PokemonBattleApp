@@ -1,9 +1,10 @@
+import { TrainerDeckComponent } from './trainer-deck/trainer-deck.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,6 +27,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 import { TrainerTradesComponent } from './trainer-trades/trainer-trades.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { CommonModule } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -40,6 +43,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     NotFoundComponent,
     LoginComponent,
     TrainerTradesComponent,
+    TrainerDeckComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,9 +60,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ReactiveFormsModule,
     NgxPaginationModule,
     MatPaginatorModule,
-    MatProgressSpinnerModule
+    CommonModule,
   ],
-  providers: [  ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

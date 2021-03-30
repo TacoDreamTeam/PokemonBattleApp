@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Trainer } from './../models/trainer';
 import { Observable, of } from 'rxjs';
-import { POKEMON_URL } from './../../environments/environment'
+import { POKEMON_URL } from './../../environments/environment';
 import { ClientMessage } from './../models/client-message.model';
 import { catchError } from 'rxjs/operators';
-import { Pokemon } from '../models/pokemon.model';
 import { PokeDeck } from '../models/pokeDeck.model';
+import { Team } from '../models/team.model';
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +38,7 @@ export class TrainerService {
   }
 
 
-  /*
+/*
   * POST
   */
   public registerNewTrainerPokemon(pokeDeck: PokeDeck): Observable<ClientMessage>  {
@@ -52,11 +52,23 @@ export class TrainerService {
     )
   }
 
+  public registerNewTeam(team: Team): Observable<ClientMessage>  {
+    // this will return a client message if we are successfully able to POST a hero to our server
+    return this.http.post<ClientMessage>(`${POKEMON_URL}TrainerInsert`, team, this.httpOptions)
+                                                                      // adding httpOptions just constructs a more robust
+                                                                      // post request to our server.  We are asking our
+                                                                      // server to return it as JSON.
+    .pipe(
+      catchError(this.handleError<any>('cannot register team!'))
+    )
+  }
+  
+
   /*
   * POST
   */
   public findTrainer(trainer: Trainer): Observable<Trainer>{
-    return this.http.post<Trainer>(`${POKEMON_URL}/TrainerGetByUsername`, trainer, this.httpOptions)
+    return this.http.post<Trainer>(`${POKEMON_URL}TrainerGetByUsername`, trainer, this.httpOptions)
     .pipe(
     //  catchError(this.handleError<Trainer>('getTrainer', undefined))
     )

@@ -1,100 +1,70 @@
 import { Component, OnInit } from '@angular/core';
-import {ErrorStateMatcher} from '@angular/material/core';
-import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
-import { AuthorizeService } from '../services/authorize.service';
 import { Trainer } from '../models/trainer';
 import { ClientMessage } from '../models/client-message.model';
 import { TrainerService } from '../services/trainer.service';
-import { PokeDeckService } from '../services/poke-deck.service';
 import { PokemonService } from '../services/pokemon.service';
-import { Pokemon } from '../models/pokemon.model';
-import { PokeDeck } from '../models/pokeDeck.model';
-
+import { TeamService } from '../services/team.service';
+import { Team } from '../models/team.model';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-
-
-
+  currentVal: number=0;
   constructor(
-    private authService: AuthorizeService,
-    private router:Router,
-    private formBuilder:FormBuilder,
     private trainerService: TrainerService,
-    private pokemonService: PokemonService ) { }
+    private pokemonService: PokemonService,
+    private teamService: TeamService
+  ) {}
 
-    pokemons: any[] = [];
-    trainers: any[]=[];
+  pokemons: any[] = [];
+  trainers: any[] = [];
+  teams: any[] = [];
 
-  profileForm = this.formBuilder.group({
-    pokeApi: ['', Validators.required],
-    name: [''],
-    type:['']
-  });
+  id = Math.floor(Math.random() * 100 + 1);
 
   ngOnInit(): void {
     this.getStartThree();
+    this.trainer.trainerId=this.id;
+    console.log(this.id);
   }
 
-  public trainer: Trainer = new Trainer(0, '', '', '','');
+  public trainer: Trainer = new Trainer( 0, '', '', '', '', 0);
 
-  public pokeDeck:PokeDeck = new PokeDeck(0,0,0)
-
+  public team: Team = new Team(0, 0, 0, 0, 0, 0, 0);
 
   // Client message to the user
   public clientMessage: ClientMessage = new ClientMessage('');
 
-  public registerTrainerFromService(): void {
-
-    this.trainerService.registerTrainer(this.trainer).subscribe(data => this.clientMessage = data,
-
-      error => this.clientMessage.message = 'SOMETHING WENT WRONG!');
+  getTrainerId(val){
+    this.currentVal=0;
+    console.log(val);
 
   }
-
-  public registerTrainerNewPokemon(): void {
-    this.trainerService.registerNewTrainerPokemon(this.pokeDeck).subscribe(data => this.clientMessage = data,
-
-      error => this.clientMessage.message = 'SOMETHING WENT WRONG!');
-
+  public registerHeroFromService(): void {
+    this.trainerService.registerTrainer(this.trainer).subscribe(
+      (data) => (this.clientMessage = data),
+      (error) => (this.clientMessage.message = 'SOMETHING WENT WRONG!')
+    );
   }
 
-  getAllTrainers():void{
-    this.trainerService.findAllTrainer().subscribe(data => this.trainers = data)
-    console.log(this.trainers)
+  public registerTeam(): void {
+    this.trainerService.registerNewTeam(this.team).subscribe(
+      (data) => (this.clientMessage = data),
+      (error) => (this.clientMessage.message = 'SOMETHING WENT WRONG!')
+    );
   }
 
-  public selectedPokemon1():void{
-    this.profileForm.patchValue({
-      pokeApi: 3,
-      name:'CHARMELEON',
-      type:'Fire'
-    });
+  getAllTrainers(): void {
+    this.trainerService
+      .findAllTrainer()
+      .subscribe((data) => (this.trainers = data));
+    console.log(this.trainers);
   }
 
-  public selectedPokemon2():void{
-    this.profileForm.patchValue({
-      pokeApi: 5,
-      name:'CHARIZARD',
-      type:'Fire'
-    });
-  }
-
-  public selectedPokemon3():void{
-    this.profileForm.patchValue({
-      pokeApi:7,
-      name:'SQUIRTLE',
-      type:'Water'
-    });
-  }
-
-
-
+  // get three pokemon from the poke API for new users
   getStartThree(): void {
     this.pokemonService.getStartThree().subscribe((res: any) => {
       res.results.forEach((data) => {

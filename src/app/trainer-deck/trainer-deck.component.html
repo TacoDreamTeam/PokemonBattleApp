@@ -1,0 +1,35 @@
+<div class="container">
+    <h1 style="text-align: center;">{{currentUser.username}}'s PokeDeck</h1>
+    <mat-grid-list cols="3" rowHeight="3:4">
+    <div *ngIf="allPokemon.length > 0">
+      <mat-grid-tile *ngFor="let pokemon of allPokemon">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{pokemon.name | uppercase}}</mat-card-title>
+            <!-- <mat-card-subtitle>{{pokemon.species.name | uppercase}}</mat-card-subtitle> -->
+          </mat-card-header>
+          <!-- <img mat-card-image [src]="pokemon.sprites.front_default" alt="Pokemon" class="px-2 py-2"> -->
+          <mat-card-content>
+            <!-- <div [ngStyle]="{'width': pokemon.stats[0].base_stat,'background-color':'lightgreen', 'padding':'2px', 'margin-top':'3px'}">Health:{{pokemon.stats[0].base_stat}}</div>
+            <div [ngStyle]="{'width': pokemon.stats[0].base_stat,'background-color':'red', 'padding':'2px', 'margin-top':'3px'}">Attack:{{pokemon.stats[1].base_stat}}</div>
+            <div [ngStyle]="{'width': pokemon.stats[0].base_stat,'background-color':'lightblue', 'padding':'2px', 'margin-top':'3px'}">Defense:{{pokemon.stats[2].base_stat}}</div> -->
+            <div [ngStyle]="{'width': pokemon.health,'background-color':'lightgreen', 'padding':'2px', 'margin-top':'3px'}">Health:{{pokemon.health}}</div>
+            <div [ngStyle]="{'width': pokemon.attack,'background-color':'red', 'padding':'2px', 'margin-top':'3px'}">Attack:{{pokemon.attack+pokemon.spAttack}}</div>
+            <div [ngStyle]="{'width': pokemon.defense,'background-color':'lightblue', 'padding':'2px', 'margin-top':'3px'}">Defense:{{pokemon.defense+pokemon.spDefense}}</div>
+          </mat-card-content>
+          <mat-card-actions style="display: flex; align-items: center; justify-content: center;"> 
+            <!-- <button mat-raised-button color="primary">{{pokemon.types[0].type.name}}</button><br/>
+            <button mat-raised-button color="accent">{{pokemon.abilities[0].ability.name}}</button> -->
+            <button mat-raised-button color="primary">{{pokemon.type}}</button><br/>
+            <button mat-raised-button color="accent">{{pokemon.attackName}}</button>
+          </mat-card-actions>
+        <div style="display: flex; align-items: center; justify-content: center;">
+          <img mat-card-image [src]="pokemon.front" alt="Pokemon" class="px-2 py-2" style="width: 200px; height: 200;">
+        </div>
+        </mat-card>
+      </mat-grid-tile>
+    </div>
+    </mat-grid-list>
+</div>
+    

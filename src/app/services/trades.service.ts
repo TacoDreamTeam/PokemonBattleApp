@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -10,6 +10,11 @@ import { Trades } from './../models/trades.model';
   providedIn: 'root'
 })
 export class TradesService {
+
+  httpOptions = {
+    // Shout out to Farid for figuring out that Content-Type must have a "-" if used
+    headers: new HttpHeaders({'Content-Type' : 'application/json'})
+  }
 
   constructor(private http:HttpClient) { }
 
@@ -47,7 +52,7 @@ export class TradesService {
     * HTTP GET
     */
     public findAllTrades(): Observable<Trades[]> {
-      return this.http.get<Trades[]>(`${POKEMON_URL}findAllTrades`)
+      return this.http.get<Trades[]>(`${POKEMON_URL}findAllTrades`,this.httpOptions)
       .pipe(
         catchError(this.handleError<Trades[]>('getTrades', []))
       ); 

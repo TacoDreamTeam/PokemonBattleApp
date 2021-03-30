@@ -27,22 +27,8 @@
 
 
   <button type="submit" mat-raised-button color="primary">Update Info</button>
+  <span><button mat-raised-button color="primary" (click)="updateProfile()">View Profile Information</button></span>
 </form>
-
-<hr>
-
-<p>
-  Form Value: {{ profileForm.value | json }}
-</p>
-
-
-<p>
-  Form Status: {{ profileForm.status }}
-</p>
-
-<p>
-  <button (click)="updateProfile()">Update Profile</button>
-</p>
 
 </mat-card>
 </div>
