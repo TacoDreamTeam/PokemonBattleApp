@@ -15,4 +15,6 @@ public interface PokeDeckService {
 	public boolean deleteDeck(int id);
 
 	public boolean updateDeck(PokeDeck pokedeck);
+
+	public List<PokeDeck> FindDeckByTrainerId(int trainerId);
 }

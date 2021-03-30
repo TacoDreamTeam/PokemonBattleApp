@@ -49,6 +49,16 @@ public class PokeDeckDaoImpl implements PokeDeckDao {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<PokeDeck> FindDeckByTrainerId(int trainerID) {
+		logger.debug("finding the team by trainerID (DAO)");
+		System.out.println("finding the team by trainerID (DAO)");
+		
+
+		return (List<PokeDeck>) sessionFactory.getCurrentSession().createCriteria(PokeDeck.class).add(Restrictions.eq("trainerId", trainerID)).list();
+	}
+
+	
 	@Override
 	public void updateDeck(PokeDeck pokedeck) {
 		try {

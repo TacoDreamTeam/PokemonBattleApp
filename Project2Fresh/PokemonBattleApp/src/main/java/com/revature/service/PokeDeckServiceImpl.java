@@ -37,6 +37,10 @@ public class PokeDeckServiceImpl implements PokeDeckService {
 	public PokeDeck FindDeckById(int id) {
 		return pokeDeckDao.FindDeckById(id);
 	}
+	
+	public List<PokeDeck> FindDeckByTrainerId(int trainerId) {
+		return pokeDeckDao.FindDeckByTrainerId(trainerId);
+	}
 
 	@Override
 	public boolean updateDeck(PokeDeck pokedeck) {

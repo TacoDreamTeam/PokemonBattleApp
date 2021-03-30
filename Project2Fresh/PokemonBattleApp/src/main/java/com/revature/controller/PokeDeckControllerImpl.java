@@ -50,6 +50,12 @@ public class PokeDeckControllerImpl implements PokeDeckController {
 		request.getSession();
 		return pokeDeckService.FindDeckById(pokedeck.getId());
 	}
+	
+	@PostMapping("/PokeDeckGetByTrainerId")
+	public @ResponseBody List<PokeDeck> FindDeckByTrianerId(@RequestBody PokeDeck pokedeck, HttpServletRequest request) {
+		request.getSession();
+		return pokeDeckService.FindDeckByTrainerId(pokedeck.getTrainerId());
+	}
 
 	@PostMapping("/PokeDeckUpdate")
 	public @ResponseBody ClientMessage updateDeck(@RequestBody PokeDeck pokedeck) {
@@ -60,7 +66,5 @@ public class PokeDeckControllerImpl implements PokeDeckController {
 	public @ResponseBody ClientMessage deleteDeck(@RequestBody PokeDeck pokedeck) {
 		return(pokeDeckService.deleteDeck(pokedeck.getId())) ? REGISTRATION_SUCCESSFUL : SOMETHING_WRONG;
 	}
-
-
 
 }

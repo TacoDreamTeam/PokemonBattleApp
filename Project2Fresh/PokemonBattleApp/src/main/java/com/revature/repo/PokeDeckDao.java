@@ -15,5 +15,7 @@ public interface PokeDeckDao {
 	public void deleteDeck(int id);
 	
 	public void updateDeck(PokeDeck pokedeck);
+
+	public List<PokeDeck> FindDeckByTrainerId(int trainerId);
 	
 }
