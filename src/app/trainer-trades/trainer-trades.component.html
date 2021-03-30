@@ -19,17 +19,18 @@
 
                 <tbody>
                     <tr *ngFor="let t of allTrades; let id = index">
-                            <!-- <td>{{t.id}}</td> -->
+<!--                        <div *ngIf="t.wantsPokeId == currentUser.trainerId || t.hasPokeId == currentUser.trainerId">-->
                             <td>{{t.wantsPokeId}}</td>
                             <td>{{t.hasPokeId}}</td>
                             <td>{{t.pokemonWanted}}</td>
                             <td>{{t.pokemonHas}}</td>
                             <td>{{t.status}}</td>
 
-                            <div *ngIf ="t.status == 'Pending'">
+                            <div *ngIf ="t.status == 'Pending' && t.wantsPokeId == currentUser.trainerId">
                                 <button (click)="tradeStatusAccept(id)">Accept</button>
                                 <button (click)="tradeStatusDeny(id)">Denied</button>                                            
                             </div>
+<!--                        </div>-->
                     </tr>
                 </tbody>
             </table>

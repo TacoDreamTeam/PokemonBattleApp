@@ -45,7 +45,7 @@ export class TrainerTradesComponent implements OnInit {
   public user: Trainer = new Trainer(0,"","","","", 0);
   public dex: PokeDeck = new PokeDeck(0,0,0);
 
-  public pokeDeck2: PokeDeck[] = [];
+  public pokeDeck2: PokeDeck = new PokeDeck(0,0,0);
 
   allTrades: Trades [] = [];
   trade: Trades = new Trades(0,0,0,0,0,"Pending");
@@ -94,13 +94,6 @@ export class TrainerTradesComponent implements OnInit {
       data => this.allTrades = data);
   }
 
-  public findAllTradesByIdFromService(): void {
-    console.log("trades by id");
-    this.trade = new Trades(301,0,0,0,0,"checking");
-    this.tradesService.findAllTradesById(this.trade).subscribe(
-      (data) => {this.allTrades = data, console.log(this.allTrades)});
-  }
-
   public registerTradeFromService(): void {
     console.log("trade registered");
     console.log(this.trade);
@@ -120,21 +113,32 @@ export class TrainerTradesComponent implements OnInit {
 
   public getPokeDeckByIdFromService(pokeDeck1: PokeDeck) {
     this.pokeDeckService.findPokeDeckById(pokeDeck1)
-    .subscribe((data) => (this.pokeDeck2 = data))
+    .subscribe((data) => {(this.pokeDeck2 = data);
+      this.switchTrainer(pokeDeck1.trainerId)})
   }
 
-  public switchTrainer(tId: number): void {
+  public switchTrainer(trainId: number): void {
+    this.pokeDeck2.trainerId = trainId;
+    this.updatePokeDeckFromService(this.pokeDeck2);
+  }
 
+  public updatePokeDeckFromService(transition: PokeDeck): void {
+    this.pokeDeckService.updatePokeDeck(transition)
+    .subscribe((data)=>
+    (error)=>(this.clientMessage.message)='The pokeDeck failed to update')
   }
 
   public tradeStatusAccept(index: number): void {
     let curTrade = this.allTrades[index];
     curTrade.status = "Accept";
-    this.getPokeDeckByIdFromService(new PokeDeck(curTrade.pokemonHas, curTrade.hasPokeId,0))
+    this.updateTradeFromService(curTrade);
+    this.getPokeDeckByIdFromService(new PokeDeck(curTrade.pokemonWanted, curTrade.hasPokeId,0))
+    this.getPokeDeckByIdFromService(new PokeDeck(curTrade.pokemonHas, curTrade.wantsPokeId, 0))
   }
 
   public tradeStatusDeny(index: number): void {
     this.allTrades[index].status = "Denied";
+    this.updateTradeFromService(this.allTrades[index]);
   }
 
 

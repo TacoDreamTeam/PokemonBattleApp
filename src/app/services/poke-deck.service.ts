@@ -36,10 +36,10 @@ export class PokeDeckService {
     /*
     * HTTP POST
     */
-    public findPokeDeckById(pokeDeck: PokeDeck): Observable<PokeDeck[]> {
-      return this.http.post<PokeDeck[]>(`${POKEMON_URL}PokeDeckGetById`, pokeDeck)
+    public findPokeDeckById(pokeDeck: PokeDeck): Observable<PokeDeck> {
+      return this.http.post<PokeDeck>(`${POKEMON_URL}PokeDeckGetById`, pokeDeck)
       .pipe(
-        catchError(this.handleError<PokeDeck[]>('getPokeDeckById', []))
+        catchError(this.handleError<PokeDeck>('getPokeDeckById', undefined))
       );
     }
 

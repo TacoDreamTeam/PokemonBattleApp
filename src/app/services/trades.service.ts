@@ -51,12 +51,12 @@ export class TradesService {
     /*
     * HTTP GET
     */
-public findAllTrades(): Observable<Trades[]> {
-  return this.http.get<Trades[]>(`${POKEMON_URL}TradesGetAll`)
-  .pipe(
-    catchError(this.handleError<Trades[]>('getTrades', []))
-  );
-}
+  public findAllTrades(): Observable<Trades[]> {
+    return this.http.get<Trades[]>(`${POKEMON_URL}TradesGetAll`)
+    .pipe(
+      catchError(this.handleError<Trades[]>('getTrades', []))
+    );
+  }
 
     private handleError<T>(operation = 'operation', result?:T) {
       return (error: any):Observable<T> => {
