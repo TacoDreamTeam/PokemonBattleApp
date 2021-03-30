@@ -29,7 +29,7 @@ export class TrainerTradesComponent implements OnInit {
   trainer:Trainer[] = [];
   pokeDeck:PokeDeck []= [];
 
-  public user: Trainer = new Trainer(0,"","","","");
+  public user: Trainer = new Trainer(0,"","","","", 0);
   public dex: PokeDeck = new PokeDeck(0,0,0);
 
   onSubmit() {

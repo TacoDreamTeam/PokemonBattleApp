@@ -1,5 +1,5 @@
 import { PokeDeckService } from './../services/poke-deck.service';
-import { PokeDeck } from './../models/pokeDeck.model';
+import { PokeDeck } from '../models/pokeDeck.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

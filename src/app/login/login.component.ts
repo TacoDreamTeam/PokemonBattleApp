@@ -20,9 +20,9 @@ export class LoginComponent implements OnInit {
 
 
 
-public trainer: Trainer = new Trainer(0,'', '','','');
+public trainer: Trainer = new Trainer(0,'', '','','', 0);
 
-public recievedTrainer: Trainer = new Trainer(0,'', '','','');
+public recievedTrainer: Trainer = new Trainer(0,'', '','','', 0);
   // Message to the User.
   public clientMessage: ClientMessage = new ClientMessage('');
 

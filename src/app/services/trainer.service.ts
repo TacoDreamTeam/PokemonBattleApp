@@ -1,23 +1,14 @@
-<<<<<<< HEAD
-=======
-import { catchError } from 'rxjs/operators';
->>>>>>> e2f70ad6bb6b459183b9d461955888c935826acc
+import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Trainer } from './../models/trainer';
 import { Observable, of } from 'rxjs';
-import { POKEMON_URL } from './../../environments/environment'
+import { POKEMON_URL } from './../../environments/environment';
 import { ClientMessage } from './../models/client-message.model';
-<<<<<<< HEAD
 import { catchError } from 'rxjs/operators';
-import { Pokemon } from '../models/pokemon.model';
-import { PokeDeck } from '../models/PokeDeck.model';
-=======
 import { Pokemon } from '../models/pokemon.model';
 import { PokeDeck } from '../models/pokeDeck.model';
 import { Team } from '../models/team.model';
-
->>>>>>> e2f70ad6bb6b459183b9d461955888c935826acc
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +25,6 @@ export class TrainerService {
 
   constructor(private http: HttpClient) { }
 
-<<<<<<< HEAD
   /*
   * POST
   */
@@ -49,29 +39,10 @@ export class TrainerService {
     )
   }
 
-=======
-  getUserDetails(){
-
-  }
-/*
-  * POST
-  */
-public registerHero(trainer: Trainer): Observable<ClientMessage>  {
-  // this will return a client message if we are successfully able to POST a hero to our server
-  return this.http.post<ClientMessage>(`${POKEMON_URL}TrainerInsert`, trainer, this.httpOptions)
-                                                                    // adding httpOptions just constructs a more robust
-                                                                    // post request to our server.  We are asking our
-                                                                    // server to return it as JSON.
-  .pipe(
-    catchError(this.handleError<any>('cannot register Trainer!'))
-  )
-}
->>>>>>> e2f70ad6bb6b459183b9d461955888c935826acc
 
 /*
   * POST
   */
-<<<<<<< HEAD
   public registerNewTrainerPokemon(pokeDeck: PokeDeck): Observable<ClientMessage>  {
     // this will return a client message if we are successfully able to POST a hero to our server
     return this.http.post<ClientMessage>(`${POKEMON_URL}PokeDeckInsert`, pokeDeck, this.httpOptions)
@@ -83,11 +54,23 @@ public registerHero(trainer: Trainer): Observable<ClientMessage>  {
     )
   }
 
+  public registerNewTeam(team: Team): Observable<ClientMessage>  {
+    // this will return a client message if we are successfully able to POST a hero to our server
+    return this.http.post<ClientMessage>(`${POKEMON_URL}TrainerInsert`, team, this.httpOptions)
+                                                                      // adding httpOptions just constructs a more robust
+                                                                      // post request to our server.  We are asking our
+                                                                      // server to return it as JSON.
+    .pipe(
+      catchError(this.handleError<any>('cannot register team!'))
+    )
+  }
+  
+
   /*
   * POST
   */
   public findTrainer(trainer: Trainer): Observable<Trainer>{
-    return this.http.post<Trainer>(`${POKEMON_URL}/TrainerGetByUsername`, trainer, this.httpOptions)
+    return this.http.post<Trainer>(`${POKEMON_URL}TrainerGetByUsername`, trainer, this.httpOptions)
     .pipe(
     //  catchError(this.handleError<Trainer>('getTrainer', undefined))
     )
@@ -110,62 +93,3 @@ public registerHero(trainer: Trainer): Observable<ClientMessage>  {
     }
   }
 }
-=======
-public registerNewTeam(team: Team): Observable<ClientMessage>  {
-  // this will return a client message if we are successfully able to POST a hero to our server
-  return this.http.post<ClientMessage>(`${POKEMON_URL}TrainerInsert`, team, this.httpOptions)
-                                                                    // adding httpOptions just constructs a more robust
-                                                                    // post request to our server.  We are asking our
-                                                                    // server to return it as JSON.
-  .pipe(
-    catchError(this.handleError<any>('cannot register team!'))
-  )
-}
-
-
-/*
-* POST
-*/
-public registerNewTrainerPokemon(pokeDeck: PokeDeck): Observable<ClientMessage>  {
-  // this will return a client message if we are successfully able to POST a hero to our server
-  return this.http.post<ClientMessage>(`${POKEMON_URL}PokeDeckInsert`, pokeDeck, this.httpOptions)
-                                                                    // adding httpOptions just constructs a more robust
-                                                                    // post request to our server.  We are asking our
-                                                                    // server to return it as JSON.
-  .pipe(
-    catchError(this.handleError<any>('cannot register Trainer!'))
-  )
-}
-
-/*
-* POST
-*/
-public findTrainer(trainer: Trainer): Observable<Trainer> {
-
-  return this.http.post<Trainer>(`${POKEMON_URL}TrainerGetByUsername`, trainer, this.httpOptions)
-
-  .pipe(
-    catchError(this.handleError<Trainer>('getHero', undefined))
-  )
-}
-
-/*
-* HTTP GET
-*/
-public findAllTrainer(): Observable<Trainer[]> {
-  return this.http.get<Trainer[]>(`${POKEMON_URL}TrainerGetAll`)
-  .pipe(
-    catchError(this.handleError<Trainer[]>('getTrainers', []))
-  );
-} // This needs to be tied with the TrainerControllerImpl based on the logic established with the instructor example & approach
-
-private handleError<T>(operation = 'operation', result?:T) {
-  return (error: any):Observable<T> => {
-    console.error(error);
-    return of(result as T);
-  }
-}
-
-
-}
->>>>>>> e2f70ad6bb6b459183b9d461955888c935826acc

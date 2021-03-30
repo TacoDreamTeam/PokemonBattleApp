@@ -34,9 +34,9 @@ export class RegisterComponent implements OnInit {
     console.log(this.id);
   }
 
-  public trainer: Trainer = new Trainer( 0, '', '', '', '');
+  public trainer: Trainer = new Trainer( 0, '', '', '', '', 0);
 
-  public team: Team = new Team(0, this.id, 0, 0, 0, 0, 0,0);
+  public team: Team = new Team(0, 0, 0, 0, 0, 0, 0);
 
   // Client message to the user
   public clientMessage: ClientMessage = new ClientMessage('');
@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
 
   }
   public registerHeroFromService(): void {
-    this.trainerService.registerHero(this.trainer).subscribe(
+    this.trainerService.registerTrainer(this.trainer).subscribe(
       (data) => (this.clientMessage = data),
       (error) => (this.clientMessage.message = 'SOMETHING WENT WRONG!')
     );

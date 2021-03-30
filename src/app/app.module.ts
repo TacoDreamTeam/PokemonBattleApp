@@ -1,3 +1,4 @@
+import { TrainerDeckComponent } from './trainer-deck/trainer-deck.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -25,10 +26,9 @@ import { RegisterComponent } from './register/register.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 import { TrainerTradesComponent } from './trainer-trades/trainer-trades.component';
-<<<<<<< HEAD
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-=======
->>>>>>> e2f70ad6bb6b459183b9d461955888c935826acc
+import { CommonModule } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -43,6 +43,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     NotFoundComponent,
     LoginComponent,
     TrainerTradesComponent,
+    TrainerDeckComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +60,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ReactiveFormsModule,
     NgxPaginationModule,
     MatPaginatorModule,
+    CommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

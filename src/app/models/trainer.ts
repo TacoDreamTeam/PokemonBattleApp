@@ -5,12 +5,14 @@ export class Trainer {
   password:string  | null |any;
   firstName:string   | null |any;
   lastName:string   | null |any;
+  teamId: number | null | any;
 
   constructor(trainerId:number   | null |any,
      username:string   | null |any,
      password:string  | null |any,
      firstName:string  | null |any,
-     lastName:string  | null |any) {
+     lastName:string  | null |any,
+     teamId: number | null | any) {
     this.trainerId = trainerId;
 
 
@@ -18,5 +20,6 @@ export class Trainer {
     this.password = password;
     this.firstName = firstName;
     this.lastName = lastName;
+    this.teamId = teamId;
   }
 }

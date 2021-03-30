@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { POKEMON_URL } from 'src/environments/environment';
 import { ClientMessage } from '../models/client-message.model';
-import { PokeDeck } from '../models/pokeDeck.model';
 import { catchError } from 'rxjs/operators';
+import { PokeDeck } from '../models/pokeDeck.model';
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +59,11 @@ export class PokeDeckService {
         catchError(this.handleError<PokeDeck[]>('getPokeDeck', []))
       );
     }
+
+    public getPokemon(api: number){
+      return this.http.get(`https://pokeapi.co/api/v2/pokemon/${api}`);
+    }
+    
 
     private handleError<T>(operation = 'operation', result?:T) {
       return (error: any):Observable<T> => {
