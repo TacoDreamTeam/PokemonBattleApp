@@ -299,7 +299,7 @@ export class CatchComponent implements OnInit {
         this.winner=`You have lost the battle, and ${this.pokemonTeam2[0].name} has run away`, 1000*i);            
     }else{
       //change user number to get from local storage
-      let poke=new pokeDex(this.currentTrainer?.trainerId, this.pokemonTeam2[0].id);
+      let poke=new pokeDex(0, this.currentTrainer?.trainerId, this.pokemonTeam2[0].id);
       
       let result:any;
       this.registerPokemon(poke).subscribe(data => this.clientMessage=data, 
