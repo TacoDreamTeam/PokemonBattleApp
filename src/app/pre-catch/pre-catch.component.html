@@ -18,7 +18,7 @@
     </select> -->
     <div style="display: flex; align-items: center; justify-content: center;">
         <div class="select">
-            <select [(ngModel)]="selected">
+            <select [(ngModel)]="selected" required>
             <option *ngFor="let option of options">{{option.name}}</option>
             </select>
             <button type="submit" (click)="catch()">View Choice</button>

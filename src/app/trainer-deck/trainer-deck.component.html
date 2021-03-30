@@ -15,8 +15,8 @@
             <div [ngStyle]="{'width': pokemon.stats[0].base_stat,'background-color':'red', 'padding':'2px', 'margin-top':'3px'}">Attack:{{pokemon.stats[1].base_stat}}</div>
             <div [ngStyle]="{'width': pokemon.stats[0].base_stat,'background-color':'lightblue', 'padding':'2px', 'margin-top':'3px'}">Defense:{{pokemon.stats[2].base_stat}}</div> -->
             <div [ngStyle]="{'width': pokemon.health,'background-color':'lightgreen', 'padding':'2px', 'margin-top':'3px'}">Health:{{pokemon.health}}</div>
-            <div [ngStyle]="{'width': pokemon.attack,'background-color':'red', 'padding':'2px', 'margin-top':'3px'}">Attack:{{pokemon.attack+pokemon.spAttack}}</div>
-            <div [ngStyle]="{'width': pokemon.defense,'background-color':'lightblue', 'padding':'2px', 'margin-top':'3px'}">Defense:{{pokemon.defense+pokemon.spDefense}}</div>
+            <div [ngStyle]="{'width': pokemon.attack,'background-color':'red', 'padding':'2px', 'margin-top':'3px'}">Attack:{{(pokemon.attack+pokemon.spAttack)//2}}</div>
+            <div [ngStyle]="{'width': pokemon.defense,'background-color':'lightblue', 'padding':'2px', 'margin-top':'3px'}">Defense:{{(pokemon.defense+pokemon.spDefense)//2}}</div>
           </mat-card-content>
           <mat-card-actions style="display: flex; align-items: center; justify-content: center;"> 
             <!-- <button mat-raised-button color="primary">{{pokemon.types[0].type.name}}</button><br/>
