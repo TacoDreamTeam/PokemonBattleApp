@@ -28,6 +28,10 @@ import { LoginComponent } from './login/login.component';
 import { TrainerTradesComponent } from './trainer-trades/trainer-trades.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { CommonModule } from '@angular/common';
+import { BattleComponent } from './battle/battle.component';
+import { PreBattleComponent } from './pre-battle/pre-battle.component';
+import { CatchComponent } from './catch/catch.component';
+import { PreCatchComponent } from './pre-catch/pre-catch.component';
 
 
 @NgModule({
@@ -44,6 +48,10 @@ import { CommonModule } from '@angular/common';
     LoginComponent,
     TrainerTradesComponent,
     TrainerDeckComponent,
+    BattleComponent,
+    PreBattleComponent,
+    CatchComponent,
+    PreCatchComponent,
   ],
   imports: [
     BrowserModule,

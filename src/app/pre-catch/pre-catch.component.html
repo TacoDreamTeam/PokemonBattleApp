@@ -1,0 +1,35 @@
+<div style="display: flex; align-items: center; justify-content: center;">
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <h1>Select Generation:</h1>
+    </div>
+    <!-- https://en.wikipedia.org/wiki/List_of_Pok%C3%A9mon -->
+    <!-- <select name="region" id="region">        
+        <option value="">Please select a generation</option>
+        <option value="0">All</option>
+        <option value="1">Generation 1 (1-151)</option>
+        <option value="2">Generation 2 (152-251)</option>
+        <option value="3">Generation 3 (252-386)</option>
+        <option value="4">Generation 4 (387-493)</option>
+        <option value="5">Generation 5 (494-649)</option>
+        <option value="6">Generation 6 (650-721)</option>
+        <option value="7">Generation 7 (722-809)</option>
+        <option value="8">Generation 8 (810-898)</option> 
+    </select> -->
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <div class="select">
+            <select [(ngModel)]="selected">
+            <option *ngFor="let option of options">{{option.name}}</option>
+            </select>
+            <button type="submit" (click)="catch()">View Choice</button>
+        </div>
+    </div>
+    <!-- <p>{{selected}}</p>
+    <p>{{printedOption}}</p>
+    <p>{{pokemonNumber}}</p> -->
+
+
+
+<!-- //    <button type="submit" (click)="catch()">Catch a Pokemon</button> -->
+    
+    
+</div>

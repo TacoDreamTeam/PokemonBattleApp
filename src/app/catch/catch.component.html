@@ -1,0 +1,123 @@
+<!-- <p>battle works!</p> -->
+<!-- <h2>{{team1.pokemonId1}}</h2>
+<h2>{{team2.pokemonId1}}</h2>
+
+<h2>{{pokemonTeam1[0].name}}</h2>
+<img width="200" alt="thumbnail" [src]="pokemonTeam1[0].sprites.front_default"> -->
+
+<!-- for testing: -->
+<!-- <h1>{{readyForBattle}}</h1>
+<h1>{{Battling}}</h1> -->
+
+<div *ngIf="!readyForBattle">
+    <div *ngIf="!Battling">
+ 
+         <button type="submit" (click)="prepareForBattle()">Prepare for Battle</button>
+ 
+     </div>
+ </div>
+ <!-- <button tIype="submit" (click)="geteffectivness()">Prepare for Battle</button> -->
+ 
+ <!-- shows when ready to battle -->
+ <div *ngIf="readyForBattle">
+     <button type="submit" (click)="Battle()">Battle</button>
+ </div>
+ 
+ <!-- shows prior to battle -->
+ <div *ngIf="!readyForBattle">
+ <div class="container">
+     <h1 style="text-align: center;">Team 1</h1>
+     <mat-grid-list cols="6" rowHeight="3:9">
+     <div *ngIf="pokemonTeam1.length > 0">
+       <mat-grid-tile *ngFor="let pokemon of pokemonTeam1">
+         <mat-card class="example-card">
+           <mat-card-header>
+             <div mat-card-avatar class="example-header-image"></div>
+             <mat-card-title>{{pokemon.name | uppercase}}</mat-card-title>
+             <!-- <mat-card-subtitle>{{pokemon.species.name | uppercase}}</mat-card-subtitle> -->
+           </mat-card-header>
+           <!-- <img mat-card-image [src]="pokemon.sprites.front_default" alt="Pokemon" class="px-2 py-2"> -->
+           <mat-card-content>
+             <!-- <div [ngStyle]="{'width': pokemon.stats[0].base_stat,'background-color':'lightgreen', 'padding':'2px', 'margin-top':'3px'}">Health:{{pokemon.stats[0].base_stat}}</div>
+             <div [ngStyle]="{'width': pokemon.stats[0].base_stat,'background-color':'red', 'padding':'2px', 'margin-top':'3px'}">Attack:{{pokemon.stats[1].base_stat}}</div>
+             <div [ngStyle]="{'width': pokemon.stats[0].base_stat,'background-color':'lightblue', 'padding':'2px', 'margin-top':'3px'}">Defense:{{pokemon.stats[2].base_stat}}</div> -->
+     
+             <div [ngStyle]="{'width': pokemon.health,'background-color':'lightgreen', 'padding':'2px', 'margin-top':'3px'}">Health:{{pokemon.health}}</div>
+             <div [ngStyle]="{'width': pokemon.attack,'background-color':'red', 'padding':'2px', 'margin-top':'3px'}">Attack:{{(pokemon.attack+pokemon.spAttack)//2}}</div>
+             <div [ngStyle]="{'width': pokemon.defense,'background-color':'lightblue', 'padding':'2px', 'margin-top':'3px'}">Defense:{{(pokemon.defense+pokemon.spDefense)//2}}</div>
+     
+ 
+           </mat-card-content>
+           <mat-card-actions style="display: flex; align-items: center; justify-content: center;"> 
+             <!-- <button mat-raised-button color="primary">{{pokemon.types[0].type.name}}</button><br/>
+             <button mat-raised-button color="accent">{{pokemon.abilities[0].ability.name}}</button> -->
+             <button mat-raised-button color="primary">{{pokemon.type}}</button><br/>
+             <button mat-raised-button color="accent">{{pokemon.attackName}}</button>
+           </mat-card-actions>
+         <div style="display: flex; align-items: center; justify-content: center;">
+           <img mat-card-image [src]="pokemon.front" alt="Pokemon" class="px-2 py-2" style="width: 200px; height: 200;">
+         </div>
+         </mat-card>
+       </mat-grid-tile>
+     </div>
+     </mat-grid-list>
+ </div>
+ <br/>
+ <hr style="border: 3px solid red;"/>
+ <h1 style="text-align: center;">VS</h1>
+ <br/>
+ <div class="container">
+     <h1 style="text-align: center;">Team 2</h1>
+     <mat-grid-list cols="6" rowHeight="3:9">
+     <div *ngIf="pokemonTeam1.length > 0">
+       <mat-grid-tile *ngFor="let pokemon of pokemonTeam2">
+         <mat-card class="example-card">
+           <mat-card-header>
+             <div mat-card-avatar class="example-header-image"></div>
+             <mat-card-title>{{pokemon.name | uppercase}}</mat-card-title>
+             <!-- <mat-card-subtitle>{{pokemon.species.name | uppercase}}</mat-card-subtitle> -->
+           </mat-card-header>
+           <!-- <img mat-card-image [src]="pokemon.sprites.front_default" alt="Pokemon" class="px-2 py-2"> -->
+           <mat-card-content>
+             <!-- <div [ngStyle]="{'width': pokemon.stats[0].base_stat,'background-color':'lightgreen', 'padding':'2px', 'margin-top':'3px'}">Health:{{pokemon.stats[0].base_stat}}</div>
+             <div [ngStyle]="{'width': pokemon.stats[0].base_stat,'background-color':'red', 'padding':'2px', 'margin-top':'3px'}">Attack:{{pokemon.stats[1].base_stat}}</div>
+             <div [ngStyle]="{'width': pokemon.stats[0].base_stat,'background-color':'lightblue', 'padding':'2px', 'margin-top':'3px'}">Defense:{{pokemon.stats[2].base_stat}}</div> -->
+     
+             <div [ngStyle]="{'width': pokemon.health,'background-color':'lightgreen', 'padding':'2px', 'margin-top':'3px'}">Health:{{pokemon.health}}</div>
+             <div [ngStyle]="{'width': pokemon.attack,'background-color':'red', 'padding':'2px', 'margin-top':'3px'}">Attack:{{(pokemon.attack+pokemon.spAttack)//2}}</div>
+             <div [ngStyle]="{'width': pokemon.defense,'background-color':'lightblue', 'padding':'2px', 'margin-top':'3px'}">Defense:{{(pokemon.defense+pokemon.spDefense)//2}}</div>
+     
+ 
+           </mat-card-content>
+           <mat-card-actions style="display: flex; align-items: center; justify-content: center;"> 
+             <!-- <button mat-raised-button color="primary">{{pokemon.types[0].type.name}}</button><br/>
+             <button mat-raised-button color="accent">{{pokemon.abilities[0].ability.name}}</button> -->
+             <button mat-raised-button color="primary">{{pokemon.type}}</button><br/>
+             <button mat-raised-button color="accent">{{pokemon.attackName}}</button>
+           </mat-card-actions>
+         <div style="display: flex; align-items: center; justify-content: center;">
+           <img mat-card-image [src]="pokemon.front" alt="Pokemon" class="px-2 py-2" style="width: 200px; height: 200;">
+         </div>
+         </mat-card>
+       </mat-grid-tile>
+     </div>
+     </mat-grid-list>
+ </div>
+ </div>
+ <br>
+ 
+ 
+ <div *ngIf="Battling" style="display: flex; align-items: center; justify-content: center;">
+     <img mat-card-image [src]="battlePokemon1.back" alt="Pokemon" class="px-2 py-2" style="width: 200px; height: 200;">
+     <img mat-card-image [src]="battlePokemon2.front" alt="Pokemon" class="px-2 py-2" style="width: 200px; height: 200;">
+ </div>
+ 
+ <!-- for testing -->
+ <!-- <div *ngIf="round">
+     <h2>{{round}}</h2>
+ </div> -->
+ 
+ 
+ <div *ngIf="winner" style="display: flex; align-items: center; justify-content: center;">
+     <h1>{{winner}}</h1>
+ </div>
