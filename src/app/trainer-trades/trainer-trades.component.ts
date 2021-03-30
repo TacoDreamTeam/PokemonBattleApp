@@ -17,6 +17,7 @@ export class TrainerTradesComponent implements OnInit {
   ngOnInit(): void {
     this.findAllTrainersFromService();
     this.findAllPokeDeckFromService();
+    this.findAllPokeDeckByTrainerIdFromService(new PokeDeck(0,0,0));
   }
   
   tradeForm = this.fb.group({
@@ -47,13 +48,18 @@ export class TrainerTradesComponent implements OnInit {
     this.pokeDeckService.findAllPokeDeck().subscribe(data => this.pokeDeck = data);
   }
 
-  public findAllPokeDeckByTrainerIdFromService(): void {
+  public findAllPokeDeckByOtherTrainerIdFromService(): void {
     console.log("SELECTED VALUE: " + this.dex.trainerId);
     this.pokeDeckService.findPokeDeckByTrainerId(this.dex).subscribe(data => this.pokeDeck = data);
   }
 
+  public findAllPokeDeckByTrainerIdFromService(pokeDeck: PokeDeck): void {
+    console.log("SELECTED VALUE: " + this.dex.trainerId);
+    this.pokeDeckService.findPokeDeckByTrainerId(pokeDeck).subscribe(data => this.myPokeDeck = data);
+  }
+
   searchPokeDeck(event: any) {
     this.dex = new PokeDeck(0,event.target.value,0);
-    this.findAllPokeDeckByTrainerIdFromService();
+    this.findAllPokeDeckByOtherTrainerIdFromService();
   }
 }
