@@ -48,7 +48,7 @@ export class TradesService {
       ); 
     } 
 
-/*
+    /*
     * HTTP GET
     */
 public findAllTrades(): Observable<Trades[]> {

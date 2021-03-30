@@ -41,8 +41,11 @@ export class TrainerTradesComponent implements OnInit {
   trainer:Trainer[] = [];
   pokeDeck:PokeDeck []= [];
   myPokeDeck: PokeDeck [] = [];
+
   public user: Trainer = new Trainer(0,"","","","", 0);
   public dex: PokeDeck = new PokeDeck(0,0,0);
+
+  public pokeDeck2: PokeDeck[] = [];
 
   allTrades: Trades [] = [];
   trade: Trades = new Trades(0,0,0,0,0,"Pending");
@@ -81,6 +84,7 @@ export class TrainerTradesComponent implements OnInit {
     }else{
       this.currentUser=JSON.parse(this.sessionValue);
       console.log(this.currentUser);
+      this.trade.hasPokeId = this.currentUser.trainerId;
     }
   }
 
@@ -97,14 +101,41 @@ export class TrainerTradesComponent implements OnInit {
       (data) => {this.allTrades = data, console.log(this.allTrades)});
   }
 
-
   public registerTradeFromService(): void {
     console.log("trade registered");
+    console.log(this.trade);
 
-    this.tradesService.registerTrade(this.trade).subscribe(
-      (data) => (this.clientMessage = data),
-      (error) => (this.clientMessage.message = 'SOMETHING WENT WRONG!')
-    );
+    this.tradesService.registerTrade(this.trade)
+    .subscribe((data)=>(this.clientMessage=data),
+    (error)=>(this.clientMessage.message)='The trade was unsuccessful'),
+    this.findAllTradesFromService()
   }
+
+  public updateTradeFromService(tradeComplete: Trades): void {
+    this.tradesService.updateTrade(tradeComplete)
+    .subscribe((data)=>
+    (error)=>(this.clientMessage.message)='The trade failed to update')
+  }
+
+
+  public getPokeDeckByIdFromService(pokeDeck1: PokeDeck) {
+    this.pokeDeckService.findPokeDeckById(pokeDeck1)
+    .subscribe((data) => (this.pokeDeck2 = data))
+  }
+
+  public switchTrainer(tId: number): void {
+
+  }
+
+  public tradeStatusAccept(index: number): void {
+    let curTrade = this.allTrades[index];
+    curTrade.status = "Accept";
+    this.getPokeDeckByIdFromService(new PokeDeck(curTrade.pokemonHas, curTrade.hasPokeId,0))
+  }
+
+  public tradeStatusDeny(index: number): void {
+    this.allTrades[index].status = "Denied";
+  }
+
 
 }
