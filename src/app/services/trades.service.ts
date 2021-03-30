@@ -42,22 +42,22 @@ export class TradesService {
     * HTTP POST
     */
     public findAllTradesById(trades: Trades): Observable<Trades[]> {
-      return this.http.post<Trades[]>(`${POKEMON_URL}TradesGetAll`, trades)
+      return this.http.post<Trades[]>(`${POKEMON_URL}TradesGetById`, trades)
       .pipe(
         catchError(this.handleError<Trades[]>('getTradesById', []))
       ); 
     } 
 
-    /*
+/*
     * HTTP GET
     */
-    public findAllTrades(): Observable<Trades[]> {
-      return this.http.get<Trades[]>(`${POKEMON_URL}findAllTrades`,this.httpOptions)
-      .pipe(
-        catchError(this.handleError<Trades[]>('getTrades', []))
-      ); 
-    } 
-  
+public findAllTrades(): Observable<Trades[]> {
+  return this.http.get<Trades[]>(`${POKEMON_URL}TradesGetAll`)
+  .pipe(
+    catchError(this.handleError<Trades[]>('getTrades', []))
+  );
+}
+
     private handleError<T>(operation = 'operation', result?:T) {
       return (error: any):Observable<T> => {
         console.error(error);

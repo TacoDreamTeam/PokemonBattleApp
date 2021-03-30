@@ -24,8 +24,7 @@ export class TrainerTradesComponent implements OnInit {
     this.checkForUser();
 
     this.findAllTrainersFromService();
-    //this.findAllTradesFromService();
-    this.findAllTradesByIdFromService();
+    this.findAllTradesFromService();
     this.findAllPokeDeckByTrainerIdFromService(new PokeDeck(0,this.currentUser.trainerId,0));
   }
   
@@ -95,12 +94,13 @@ export class TrainerTradesComponent implements OnInit {
     console.log("trades by id");
     this.trade = new Trades(301,0,0,0,0,"checking");
     this.tradesService.findAllTradesById(this.trade).subscribe(
-      data => this.allTrades = data);
+      (data) => {this.allTrades = data, console.log(this.allTrades)});
   }
 
 
   public registerTradeFromService(): void {
     console.log("trade registered");
+
     this.tradesService.registerTrade(this.trade).subscribe(
       (data) => (this.clientMessage = data),
       (error) => (this.clientMessage.message = 'SOMETHING WENT WRONG!')
