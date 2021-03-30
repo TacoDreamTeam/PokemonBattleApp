@@ -1,3 +1,4 @@
+import { Trainer } from './../models/trainer';
 import { Team } from './../models/team.model';
 import { ClientMessage } from './../models/client-message.model';
 import { pokeDex } from './../models/pokeDex';
@@ -31,6 +32,7 @@ export class CatchComponent implements OnInit {
   public readyForBattle:boolean=false;
   public Battling:boolean=false;
 
+  public currentTrainer?:Trainer;
 //battles are currently hard coded in, retrieve from elsewhere later.
   public trainer1:Team=new Team(703, 1, 0, 0, 0, 0, 0);
   //public trainer2:Team=new Team(0, 1, 0, 0, 0, 0, 0); //set the first value to from precatch
@@ -57,6 +59,18 @@ export class CatchComponent implements OnInit {
     this.readyForBattle=false;
     this.Battling=false;
 
+    //set current trainer team:
+    let me: any;
+    me=sessionStorage.getItem('currentTrainer')
+    let currentTrainer:Trainer
+
+    currentTrainer=JSON.parse(me);
+    console.log(currentTrainer.teamId);
+    this.currentTrainer=currentTrainer;
+    this.trainer1.id=this.currentTrainer.teamId;  
+    
+    
+    //set wild pokemon:
     let pokeID:any;
     pokeID=localStorage.getItem('wild');
     this.team2.pokemonId1=parseInt(JSON.parse(pokeID));
@@ -285,7 +299,7 @@ export class CatchComponent implements OnInit {
         this.winner=`You have lost the battle, and ${this.pokemonTeam2[0].name} has run away`, 1000*i);            
     }else{
       //change user number to get from local storage
-      let poke=new pokeDex(803, this.pokemonTeam2[0].id);
+      let poke=new pokeDex(this.currentTrainer?.trainerId, this.pokemonTeam2[0].id);
       
       let result:any;
       this.registerPokemon(poke).subscribe(data => this.clientMessage=data, 

@@ -55,6 +55,17 @@ public trainer2:Team=new Team(0, 0, 0, 0, 0, 0, 0);
 
 
   ngOnInit(): void {
+    //set current trainer team:
+    let me: any;
+    me=sessionStorage.getItem('currentTrainer')
+    let currentTrainer:Trainer
+
+    currentTrainer=JSON.parse(me);
+    console.log(currentTrainer.teamId);
+    this.trainer1.id=currentTrainer.teamId;
+
+
+    //set opponent trainer team:
     let opp:any;
     opp=localStorage.getItem('opponent');
     let opponent:Trainer;
@@ -62,6 +73,8 @@ public trainer2:Team=new Team(0, 0, 0, 0, 0, 0, 0);
     opponent=JSON.parse(opp);
     console.log(opponent.teamId);
     this.trainer2.id=opponent.teamId;
+
+
 
 
     //Get the teams from the trainer
