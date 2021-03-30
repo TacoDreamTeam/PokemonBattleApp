@@ -1,4 +1,5 @@
 export class PokemonAPI{
+
     id:number;
     name:string;
     front: any;
@@ -11,6 +12,7 @@ export class PokemonAPI{
     spAttack: number;
     spDefense: number;
     speed:number;
+
     constructor(id:number, name:string, front: any, back:any, type:string, 
                 attackName: string, health: number,attack: number, defense: number, 
                 spAttack: number, spDefense: number, speed:number){

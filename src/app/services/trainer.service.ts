@@ -86,6 +86,27 @@ export class TrainerService {
     );
   } // This needs to be tied with the TrainerControllerImpl based on the logic established with the instructor example & approach
 
+  public findTrainerByID(trainer:Trainer):Observable<Trainer>{
+    return this.http.post<Trainer>(`http://localhost:8080/PokemonBattleApp/TrainerGetById`, trainer)
+    .pipe(
+      catchError(this.handleError<Trainer>('findTrainer', undefined))
+    )
+}
+
+public findAllTrainers():Observable<Trainer[]>{
+  return this.http.get<Trainer[]>(`http://localhost:8080/PokemonBattleApp/TrainerGetAll`)
+  .pipe(
+    catchError(this.handleError<Trainer[]>('findTrainer', []))
+  );
+}
+
+public findTrainerByUser(trainer:Trainer):Observable<Trainer>{
+  return this.http.post<Trainer>(`http://localhost:8080/PokemonBattleApp/TrainerGetByUsername`, trainer)
+  .pipe(
+    catchError(this.handleError<Trainer>('findTrainer', undefined))
+  )
+}
+
   private handleError<T>(operation = 'operation', result?:T) {
     return (error: any):Observable<T> => {
       console.error(error);

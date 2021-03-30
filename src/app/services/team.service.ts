@@ -64,6 +64,13 @@ export class TeamService {
       );
     }
 
+    public findTeam(team:Team):Observable<Team>{
+      return this.http.post<Team>(`http://localhost:8080/PokemonBattleApp/TeamGetById`, team)
+        .pipe(
+          catchError(this.handleError<Team>('findTeam', undefined))
+        )
+    }
+
     private handleError<T>(operation = 'operation', result?:T) {
       return (error: any):Observable<T> => {
         console.error(error);
