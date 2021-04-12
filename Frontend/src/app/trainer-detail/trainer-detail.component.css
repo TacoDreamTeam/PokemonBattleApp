@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.container{
+  margin-top: 3em;
+}
+
+
+button{
+  margin: 5px;
+}

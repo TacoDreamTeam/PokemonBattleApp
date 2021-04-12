@@ -1,0 +1,84 @@
+<div class="container">
+  <mat-card>
+
+    <h1>Register Form</h1>
+    <div class="list-group">
+      <div class="list-group-item">
+
+        <div class="form-group">
+
+          <!-- Here I want to take input from the user, and change the property of the hero object in my ts file -->
+          <label for="">Trainer Id:</label>
+          <input type="text" [(ngModel)]="trainer.trainerId" class="form-control"   (ngModelChange) = "this.trainer.trainerId($event)"  [value]="this.id" formControlName="trainerId"
+            id="trainer_id" aria-describedby="trainer_id">
+          <label>Username:</label>
+          <input [(ngModel)]="trainer.username" placeholder="Enter Username" class="form-control " required>
+          <label>Password:</label>
+          <input [(ngModel)]="trainer.password" placeholder="Enter Password" class="form-control" required>
+          <label>First Name:</label>
+          <input [(ngModel)]="trainer.firstName" placeholder="Enter First Name" class="form-control" required>
+          <label>Last Name</label>
+          <input [(ngModel)]="trainer.lastName" placeholder="Enter Last Name" class="form-control" required>
+          <label for="">Select Pokemon</label>
+          <select class="form-control">
+            <option value="3">CHARMELEON</option>
+            <option value="5">CHARIZARD</option>
+            <option value="7">SQUIRTLE</option>
+          </select>
+        </div>
+
+
+
+        <div>
+          <button mat-raised-button color="primary" (click)="registerHeroFromService()">Register Trainer!</button>
+          <span><a mat-flat-button color="primary" [routerLink]="['/login']">
+              <mat-icon>login</mat-icon>Login
+            </a></span>
+        </div>
+
+
+        <div>
+          {{ clientMessage.message }}
+        </div>
+
+      </div>
+
+    </div>
+
+  </mat-card>
+
+  <br>
+  <br>
+  <div class="container">
+    <mat-grid-list cols="4" rowHeight="3:6">
+      <mat-grid-tile *ngFor="let pokemon of pokemons">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{pokemon.name | uppercase}}</mat-card-title>
+            <mat-card-subtitle>{{pokemon.species.name | uppercase}}</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image [src]="pokemon.sprites.front_default" alt="Pokemon" class="px-2 py-2">
+          <mat-card-content>
+            <div
+              [ngStyle]="{'width': pokemon.stats[0].base_stat,'background-color':'lightgreen', 'padding':'2px', 'margin-top':'3px'}">
+              Health:{{pokemon.stats[0].base_stat}}</div>
+            <div
+              [ngStyle]="{'width': pokemon.stats[0].base_stat,'background-color':'red', 'padding':'2px', 'margin-top':'3px'}">
+              Attack:{{pokemon.stats[1].base_stat}}</div>
+            <div
+              [ngStyle]="{'width': pokemon.stats[0].base_stat,'background-color':'lightblue', 'padding':'2px', 'margin-top':'3px'}">
+              Defense:{{pokemon.stats[2].base_stat}}</div>
+
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="primary">{{pokemon.types[0].type.name}}</button>
+            <button mat-raised-button color="accent">{{pokemon.abilities[0].ability.name}}</button>
+          </mat-card-actions>
+        </mat-card>
+
+
+      </mat-grid-tile>
+
+    </mat-grid-list>
+  </div>

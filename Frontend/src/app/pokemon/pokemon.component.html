@@ -1,0 +1,28 @@
+<div class="container">
+<mat-grid-list cols="4" rowHeight="3:6" >
+  <mat-grid-tile *ngFor="let pokemon of pokemons">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{pokemon.name | uppercase}}</mat-card-title>
+        <mat-card-subtitle>{{pokemon.species.name | uppercase}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="pokemon.sprites.front_default" alt="Pokemon" class="px-2 py-2">
+      <mat-card-content>
+        <div [ngStyle]="{'width': pokemon.stats[0].base_stat,'background-color':'lightgreen', 'padding':'2px', 'margin-top':'3px'}">Health:{{pokemon.stats[0].base_stat}}</div>
+        <div [ngStyle]="{'width': pokemon.stats[0].base_stat,'background-color':'red', 'padding':'2px', 'margin-top':'3px'}">Attack:{{pokemon.stats[1].base_stat}}</div>
+        <div [ngStyle]="{'width': pokemon.stats[0].base_stat,'background-color':'lightblue', 'padding':'2px', 'margin-top':'3px'}">Defense:{{pokemon.stats[2].base_stat}}</div>
+
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary">{{pokemon.types[0].type.name}}</button>
+        <button mat-raised-button color="accent">{{pokemon.abilities[0].ability.name}}</button>
+      </mat-card-actions>
+    </mat-card>
+
+
+  </mat-grid-tile>
+
+</mat-grid-list>
+</div>
+

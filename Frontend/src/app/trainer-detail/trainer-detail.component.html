@@ -1,0 +1,34 @@
+<div class="container">
+<mat-card>
+
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+<div>
+  <h1>Trainer Information</h1>
+</div>
+  <div class="form-group">
+    <label for="firstName">First Name:</label>
+    <input type="text" class="form-control" formControlName="firstName" id="firstName" aria-describedby="firstName" placeholder="Enter First Name">
+  </div>
+
+  <div class="form-group">
+    <label for="lastName">Last Name:</label>
+    <input type="text" class="form-control" formControlName="lastName" id="lastName" aria-describedby="lastName" placeholder="Enter Last Name">
+  </div>
+
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input type="text" readonly class="form-control" formControlName="username" id="username" aria-describedby="username" placeholder="Enter Username">
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input type="password" class="form-control" formControlName="password" id="password" aria-describedby="password" placeholder="Enter password">
+  </div>
+
+
+  <button type="submit" mat-raised-button color="primary">Update Info</button>
+  <span><button mat-raised-button color="primary" (click)="updateProfile()">View Profile Information</button></span>
+</form>
+
+</mat-card>
+</div>

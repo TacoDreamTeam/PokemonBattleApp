@@ -1,0 +1,48 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container" >
+    <h1 >Welcome To The Trainer Dashboard</h1>
+     <h2>Trainer Logged in:{{currentUser.firstName}}</h2>
+  </div>
+</div>
+
+<div class="container">
+  <nav>
+    <mat-grid-list cols="4" rowHeight="5:3">
+      <mat-grid-tile>
+        <button mat-raised-button color="warn">
+          <a routerLink="/trainerInfo">Trainer Information</a>
+        </button>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <button mat-raised-button color="warn">
+           <a routerLink="/trainerDeck">View Trainer PokeDeck</a>
+          </button>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <button mat-raised-button color="warn">
+          <a routerLink="/preCatch">Battle Wild Pokemon</a>
+        </button>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <button mat-raised-button color="warn">
+          <a routerLink="/preBattle">Battle a Trainer</a>
+        </button>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <button mat-raised-button color="warn">
+          <a routerLink="/trainerTrades">Trade with a Trainer</a>
+        </button>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <button mat-raised-button color="warn">
+          <a routerLink="/pokemon">View All Pokemon</a>
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </nav>
+</div>

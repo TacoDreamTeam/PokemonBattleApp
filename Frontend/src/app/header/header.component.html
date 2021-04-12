@@ -1,0 +1,14 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <span><a routerLink="">Pokemon App</a></span>
+    <span class="example-spacer"></span>
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+    >
+    <a [routerLink]="['/login']" (click)="logOut();"><mat-icon>exit_to_app</mat-icon></a>
+    </button>
+  </mat-toolbar-row>
+
+

@@ -1,0 +1,30 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+a{
+  color: white;
+  text-decoration: none;
+}
+
+a:link{
+  color:white;
+}
+
+.footer{
+  position: absolute;
+  bottom: 0;
+  padding: 1em;
+}
+
+#footerTitle{
+  text-align: center;
+}
+
+mat-toolbar{
+  background-color: black;
+}
+
+mat-icon{
+  color: whitesmoke;
+}
